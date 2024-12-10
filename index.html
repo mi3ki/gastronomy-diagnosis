@@ -751,32 +751,44 @@
         "速攻型グルメハンター (Speedy Taste Seeker)": [8, 14],
         "映え狙いの美食家 (Insta-Gastronome)": [2, 18]
     };
-        document.getElementById("submitBtn").addEventListener("click", function () {
-            const form = document.forms["quizForm"];
-            const scores = {};
+        
+     document.getElementById("submitBtn").addEventListener("click", function () {
+         const form = document.forms["quizForm"];
+         const totalQuestions = 20; // 質問数を設定
+         const scores = {};
 
-            // 初期化
-            Object.keys(typeMapping).forEach(type => scores[type] = 0);
+         // 初期化
+         Object.keys(typeMapping).forEach(type => scores[type] = 0);
 
-            // 質問ごとの回答をスコアに加算
-            for (let i = 1; i <= 20; i++) {
-                const answer = form[`q${i}`]?.value;
-                if (answer) {
-                    const answerScore = 7 - parseInt(answer); // スコア計算
-                    Object.keys(typeMapping).forEach(type => {
-                        if (typeMapping[type].includes(i)) {
-                            scores[type] += answerScore;
-                        }
-                    });
-                }
-            }
+         // 未回答チェック用フラグ
+         let allAnswered = true;
 
-            // スコアが最も高いタイプを決定
-            const resultType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+         // 質問ごとの回答をスコアに加算
+         for (let i = 1; i <= totalQuestions; i++) {
+             const answer = form[`q${i}`]?.value;
+             if (!answer) {
+                 allAnswered = false; // 未回答がある場合
+                 break;
+             }
 
-            // 結果ページに遷移し、結果をクエリパラメータで渡す
-            window.location.href = `result.html?type=${encodeURIComponent(resultType)}`;
-        });
-    </script>
-</body>
-</html>
+             const answerScore = 7 - parseInt(answer); // スコア計算
+             Object.keys(typeMapping).forEach(type => {
+                 if (typeMapping[type].includes(i)) {
+                     scores[type] += answerScore;
+                 }
+             });
+         }
+
+         // 未回答がある場合の警告
+         if (!allAnswered) {
+             alert("すべての質問に回答してください。");
+             return;
+         }
+
+         // スコアが最も高いタイプを決定
+         const resultType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+
+         // 結果ページに遷移し、結果をクエリパラメータで渡す
+         window.location.href = `result.html?type=${encodeURIComponent(resultType)}`;
+     });
+</script>
