@@ -229,52 +229,70 @@
     <div class="result" id="result"></div>
 
     <script>
-        // 質問ごとのスコアを16タイプにマッピング
-        const typeMapping = {
-            "地産地消探求者 (Local Explore)": [1, 3, 9, 17],
-            "冒険する食旅人(Food Adventurist)": [2, 10, 18],
-            "食文化の継承者（Heritage Food Seeker）": [11, 12, 14],
-            "贅沢志向の美食家（Luxury Gourmet)": [15, 4, 16],
-            "自由な食べ歩き旅人（Freedom Tasting Walker）": [8, 5],
-            "自然に優しい美食家(Eco-Gastronome)": [6, 13, 19],
-            "美食冒険家（Gourmet Adventurer）": [7, 20],
-            "地元食の伝道師(Community Food Ambassador）": [1, 4],
-            "動き回る味覚探検家（Dynamic Taste Explorer）": [3, 14, 18],
-            "伝統の味わい案内人(Traditional Flavor Curator)": [9, 10, 11],
-            "シェフと語る美食家(Chef’s Dialogue Enthusiast)": [12, 19],
-            "隠れ家グルメ探索者（Hidden Plate Explorer）": [13, 7],
-            "野生の食旅探検者（Wild Food Adventurist）": [16, 20],
-            "料理体験愛好家（Food Craft Enthusiast）: [19, 20],
-            "速攻型グルメハンター（Speedy Taste Seeker）": [8, 14],
-            "映え狙いの美食家（Insta-Gastronome）": [2, 18]
-        };
+    const typeMapping = {
+        "地産地消探求者 (Local Explore)": [1, 3, 9, 17],
+        "冒険する食旅人 (Food Adventurist)": [2, 10, 18],
+        "食文化の継承者 (Heritage Food Seeker)": [11, 12, 14],
+        "贅沢志向の美食家 (Luxury Gourmet)": [15, 4, 16],
+        "自由な食べ歩き旅人 (Freedom Tasting Walker)": [8, 5],
+        "自然に優しい美食家 (Eco-Gastronome)": [6, 13, 19, 20],
+        "美食冒険家 (Gourmet Adventurer)": [7, 20],
+        "地元食の伝道師 (Community Food Ambassador)": [1, 4],
+        "動き回る味覚探検家 (Dynamic Taste Explorer)": [3, 14, 18],
+        "伝統の味わい案内人 (Traditional Flavor Curator)": [9, 10, 11],
+        "シェフと語る美食家 (Chef’s Dialogue Enthusiast)": [12, 19],
+        "隠れ家グルメ探索者 (Hidden Plate Explorer)": [13, 7],
+        "野生の食旅探検者 (Wild Food Adventurist)": [16, 20],
+        "料理体験愛好家 (Food Craft Enthusiast)": [19, 20],
+        "速攻型グルメハンター (Speedy Taste Seeker)": [8, 14],
+        "映え狙いの美食家 (Insta-Gastronome)": [2, 18]
+    };
 
-        document.getElementById("submitBtn").addEventListener("click", function () {
-            const form = document.forms["quizForm"];
-            const scores = {};
+    const typeDescriptions = {
+        "地産地消探求者 (Local Explore)": "あなたは地元の味を求めて旅する“地産地消探求者”タイプ！地元の新鮮な食材や伝統料理に心を惹かれるようです。味わうだけでなく、その背景にある地元の人々の物語を大切にするあなたには、農家や漁港での収穫体験、田舎の隠れた名店を巡る旅がぴったりです！",
+        "冒険する食旅人 (Food Adventurist)": "あなたは未知の味覚を求める“冒険する食旅人”タイプ！珍しい食材や一風変わった調理法の料理に挑戦するのが大好きです。地元のフェスティバルや漁師町での特別な体験があなたを待っています。一歩踏み出すたびに、新しい世界が広がります！",
+        "食文化の継承者 (Heritage Food Seeker)": "あなたは食の歴史を深く楽しむ“食文化の継承者”タイプ！伝統的なレシピや食文化の背景を学び、体験することに情熱を感じます。老舗料亭での食事や、文化財に指定された食の名所を巡る旅があなたにぴったりです。",
+        "贅沢志向の美食家 (Luxury Gourmet)": "あなたは一流の味とサービスを追求する“贅沢志向の美食家”タイプ！高級感あふれるディナーコースや洗練された宿泊施設での食体験が好きなあなたには、特別なプライベートツアーや地元の一流シェフによる特別メニューがおすすめです。",
+        "自由な食べ歩き旅人 (Freedom Tasting Walker)": "あなたは自分のペースで旅を楽しむ“自由な食べ歩き旅人”タイプ！観光地での名物料理から道端の屋台グルメまで、偶然の出会いを楽しむことが得意です。予定に縛られず自由に動ける旅を満喫しましょう！",
+        "自然に優しい美食家 (Eco-Gastronome)": "あなたは環境を考えた食を愛する“自然に優しい美食家”タイプ！地元のオーガニック農園やエコファームでの体験が魅力的に映るあなたには、持続可能な農業や自然と調和した食文化を学べる旅がぴったりです。",
+        "美食冒険家 (Gourmet Adventurer)": "あなたは世界中の味を追い求める“美食冒険家”タイプ！普段味わうことのできないユニークな調理法にも興味津々。地元食材を使った創作料理が楽しめる旅があなたにおすすめです。",
+        "地元食の伝道師 (Community Food Ambassador)": "あなたは地元の食文化を広める“地元食の伝道師”タイプ！地元の特産品を活かした料理や食材の魅力を伝えることに喜びを感じます。農家や漁師との交流を通じて、地域の魅力を再発見する旅がぴったりです。",
+        "動き回る味覚探検家 (Dynamic Taste Explorer)": "あなたは観光地を精力的に巡る“動き回る味覚探検家”タイプ！アクティブに動きながら、幅広い食のジャンルを楽しむことが得意。観光スポットとご当地グルメを組み合わせたプランで、充実した旅を満喫しましょう。",
+        "伝統の味わい案内人 (Traditional Flavor Curator)": "あなたは昔ながらの味を愛する“伝統の味わい案内人”タイプ！老舗の味や代々受け継がれるレシピに心惹かれるあなたには、歴史とともに味わう食体験がぴったりです。時を超えた味わいを求めて、旅に出かけましょう。",
+        "シェフと語る美食家 (Chef’s Dialogue Enthusiast)": "あなたは料理人との交流を大切にする“シェフと語る美食家”タイプ！シェフや地元の料理人から直接調理のこだわりを聞く体験に興味津々。料理教室や体験がセットになった旅がぴったりです。",
+        "隠れ家グルメ探索者 (Hidden Plate Explorer)": "あなたは知る人ぞ知る名店を探す“隠れ家グルメ探索者”タイプ！大通りの名店よりも、静かで個性的なスポットを楽しむのが好きなあなたには、地元の人しか知らない隠れ家ツアーがぴったりです。",
+        "野生の食旅探検者 (Wild Food Adventurist)": "あなたは自然の恵みを楽しむ“野生の食旅探検者”タイプ！山菜採りや漁業体験を楽しむ旅が理想的。自然と触れ合う体験があなたを最高の旅に導くはずです！",
+        "料理体験愛好家 (Food Craft Enthusiast)": "あなたは自分で作る楽しさを追求する“料理体験愛好家”タイプ！収穫から調理までの一連の流れを楽しむワークショップが大好き。自分で作った料理を味わう充実感が得られる旅を探しましょう。",
+        "速攻型グルメハンター (Speedy Taste Seeker)": "あなたは限られた時間を効率的に使う“速攻型グルメハンター”タイプ！短時間で観光地を回りながら、話題のグルメを楽しむことに喜びを感じます。スピード感のあるツアーがぴったりです。",
+        "映え狙いの美食家 (Insta-Gastronome)": "あなたは見た目の美しさも重視する“映え狙いの美食家”タイプ！盛り付けの美しい料理やユニークな体験が好きなあなたには、SNS映えする体験型食スポットを巡る旅がぴったりです。"
+        
+        // 他のタイプの詳細もここに追加
+    };
 
-            // 初期化: 各タイプのスコアを0に設定
-            Object.keys(typeMapping).forEach(type => scores[type] = 0);
+    document.getElementById("submitBtn").addEventListener("click", function () {
+        const form = document.forms["quizForm"];
+        const scores = {};
 
-            // 質問をループしてスコアを加算
-            for (let i = 1; i <= 20; i++) {
-                const answer = form[`q${i}`]?.value;
-                if (answer) {
-                    const answerScore = 7 - parseInt(answer); // 6段階評価を逆転
-                    Object.keys(typeMapping).forEach(type => {
-                        if (typeMapping[type].includes(i)) {
-                            scores[type] += answerScore;
-                        }
-                    });
-                }
+        // 初期化: 各タイプのスコアを0に設定
+        Object.keys(typeMapping).forEach(type => scores[type] = 0);
+
+        // 質問をループしてスコアを加算
+        for (let i = 1; i <= 20; i++) {
+            const answer = form[`q${i}`]?.value;
+            if (answer) {
+                const answerScore = 7 - parseInt(answer); // 6段階評価を逆転
+                Object.keys(typeMapping).forEach(type => {
+                    if (typeMapping[type].includes(i)) {
+                        scores[type] += answerScore;
+                    }
+                });
             }
+        }
 
-            // 最大スコアのタイプを取得
-            const resultType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+        // 最大スコアのタイプを取得
+        const resultType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
 
-            // 結果表示
-            document.getElementById("result").innerText = `あなたのタイプは: ${resultType}`;
-        });
-    </script>
-</body>
-</html>
+        // 結果表示
+        document.getElementById("result").innerText = `あなたのタイプは: ${resultType}\n${typeDescriptions[resultType] || ""}`;
+    });
+</script>
