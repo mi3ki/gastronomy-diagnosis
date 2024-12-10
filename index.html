@@ -5,40 +5,133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ガストロノミーツーリズム診断</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .question { margin-bottom: 20px; }
-        .result { margin-top: 30px; font-weight: bold; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question p {
+            font-weight: bold;
+        }
+        .result {
+            margin-top: 30px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
     <h1>ガストロノミーツーリズム診断</h1>
     <form id="quizForm">
+        <!-- 20個の質問 -->
         <div class="question">
-            <p>地元の特産品を試すことに興味がありますか？</p>
-            <input type="radio" name="q1" value="1"> はい
-            <input type="radio" name="q1" value="0"> いいえ
+            <p>旅行中、地元の人々と会話を楽しむことが好きだ。</p>
+            <input type="radio" name="q1" value="1"> 非常に同意
+            <input type="radio" name="q1" value="2"> 同意
+            <input type="radio" name="q1" value="3"> やや同意
+            <input type="radio" name="q1" value="4"> やや不同意
+            <input type="radio" name="q1" value="5"> 不同意
+            <input type="radio" name="q1" value="6"> 全く不同意
         </div>
         <div class="question">
-            <p>新しい料理に挑戦するのが好きですか？</p>
-            <input type="radio" name="q2" value="1"> はい
-            <input type="radio" name="q2" value="0"> いいえ
+            <p>旅行中は、ゆったりと一人で過ごす時間が必要だ。</p>
+            <input type="radio" name="q2" value="1"> 非常に同意
+            <input type="radio" name="q2" value="2"> 同意
+            <input type="radio" name="q2" value="3"> やや同意
+            <input type="radio" name="q2" value="4"> やや不同意
+            <input type="radio" name="q2" value="5"> 不同意
+            <input type="radio" name="q2" value="6"> 全く不同意
         </div>
-        <button type="button" id="submitBtn">結果を見る</button>
+        <!-- 以下、残り18個の質問 -->
+        <!-- 質問を20個まで繰り返し追加 -->
+        <div class="question">
+            <p>観光地での賑やかなイベントに参加するのが好きだ。</p>
+            <input type="radio" name="q3" value="1"> 非常に同意
+            <input type="radio" name="q3" value="2"> 同意
+            <input type="radio" name="q3" value="3"> やや同意
+            <input type="radio" name="q3" value="4"> やや不同意
+            <input type="radio" name="q3" value="5"> 不同意
+            <input type="radio" name="q3" value="6"> 全く不同意
+        </div>
+        <div class="question">
+            <p>その土地でしか食べられない料理を試すのが好きだ。</p>
+            <input type="radio" name="q4" value="1"> 非常に同意
+            <input type="radio" name="q4" value="2"> 同意
+            <input type="radio" name="q4" value="3"> やや同意
+            <input type="radio" name="q4" value="4"> やや不同意
+            <input type="radio" name="q4" value="5"> 不同意
+            <input type="radio" name="q4" value="6"> 全く不同意
+        </div>
+        <!-- ... -->
+        <!-- 全部で20個分の質問を同じ形式で追加 -->
+
+        <button type="button" id="submitBtn">診断結果を見る</button>
     </form>
     <div class="result" id="result"></div>
 
     <script>
-        document.getElementById('submitBtn').addEventListener('click', function() {
-            const form = document.forms['quizForm'];
-            let score = 0;
+        // 質問ごとのスコアを16タイプにマッピング
+        const typeMapping = {
+            "Local Taste Connector": [1, 3, 9, 17],
+            "Food Adventurist": [2, 10, 18],
+            "Heritage Food Seeker": [11, 12, 14],
+            "Gastro Luxurist": [15, 4, 16],
+            "Freedom Tasting Walker": [8, 5],
+            "Eco-Gastronome": [6, 13, 19],
+            "Gourmet Pioneer": [7, 20],
+            "Community Food Ambassador": [1, 4],
+            "Dynamic Taste Explorer": [3, 14, 18],
+            "Traditional Flavor Curator": [9, 10, 11],
+            "Chef’s Dialogue Enthusiast": [12, 19],
+            "Hidden Plate Explorer": [13, 7],
+            "Wild Food Adventurist": [16, 20],
+            "Food Craft Enthusiast": [19, 20],
+            "Speedy Taste Seeker": [8, 14],
+            "Insta-Gastronome": [2, 18]
+        };
 
-            for (let i = 1; i <= 2; i++) {
-                const answer = form[`q${i}`].value;
-                score += parseInt(answer || "0");
+        document.getElementById("submitBtn").addEventListener("click", function () {
+            const form = document.forms["quizForm"];
+            const scores = {};
+
+            // 初期化: 各タイプのスコアを0に設定
+            Object.keys(typeMapping).forEach(type => scores[type] = 0);
+
+            // 質問をループしてスコアを加算
+            for (let i = 1; i <= 20; i++) {
+                const answer = form[`q${i}`]?.value;
+                if (answer) {
+                    const answerScore = 7 - parseInt(answer); // 6段階評価を逆転
+                    Object.keys(typeMapping).forEach(type => {
+                        if (typeMapping[type].includes(i)) {
+                            scores[type] += answerScore;
+                        }
+                    });
+                }
             }
 
-            const result = score > 1 ? "冒険的グルメハンター" : "文化体験型フードラバー";
-            document.getElementById('result').innerText = `あなたのタイプは: ${result}`;
+            // 最大スコアのタイプを取得
+            const resultType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+
+            // 結果表示
+            document.getElementById("result").innerText = `あなたのタイプは: ${resultType}`;
         });
     </script>
 </body>
