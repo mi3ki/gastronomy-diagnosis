@@ -1,1 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>診断結果</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .result {
+            margin-top: 30px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .description {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+        .buttons {
+            margin-top: 30px;
+        }
+        .button {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>ガストロノミーツーリズム診断結果</h1>
+    <div class="result" id="resultType"></div>
+    <div class="description" id="resultDescription"></div>
+    <div class="buttons">
+        <!-- 戻るボタン -->
+        <a href="index.html" class="button">もう一度診断する</a>
+
+        <!-- SNSシェアボタン -->
+        <a id="shareTwitter" class="button" target="_blank">Twitterでシェア</a>
+        <a id="shareFacebook" class="button" target="_blank">Facebookでシェア</a>
+        <a id="shareLine" class="button" target="_blank">LINEでシェア</a>
+
+        <!-- Instagramシェアボタン -->
+        <button id="copyInstagram" class="button">Instagramに投稿する</button>
+    </div>
+
+    <script>
+        // URLパラメータから診断結果を取得
+        const urlParams = new URLSearchParams(window.location.search);
+        const resultType = urlParams.get('type');
+
+        // 診断結果と説明のデータ
+        const typeDescriptions = {
+            "地産地消探求者": "あなたは地元の新鮮な食材や伝統料理を愛するタイプ！農家や漁港での収穫体験がぴったりです。",
+            "冒険する食旅人": "あなたは新しい味覚を求めて挑戦する冒険者！珍しい料理に挑戦してみましょう。",
+            "贅沢志向の美食家": "あなたは一流の味とサービスを追求するタイプ！高級な食体験がぴったりです。",
+            "自由な食べ歩き旅人": "予定に縛られず自分のペースで旅を楽しむあなたには、食べ歩きツアーがおすすめです。"
+            // 必要に応じて他のタイプを追加
+        };
+
+        // 結果を表示
+        const resultElement = document.getElementById('resultType');
+        const descriptionElement = document.getElementById('resultDescription');
+
+        if (resultType && typeDescriptions[resultType]) {
+            resultElement.innerText = `あなたのタイプ: ${resultType}`;
+            descriptionElement.innerText = typeDescriptions[resultType];
+        } else {
+            resultElement.innerText = "診断結果が見つかりませんでした。";
+            descriptionElement.innerText = "もう一度診断をお試しください。";
+        }
+
+        // SNSシェアリンクの作成
+        const baseUrl = window.location.origin + window.location.pathname; // 現在のページURL
+
+        // Twitter
+        const twitterText = `私の診断結果は「${resultType}」でした！ #ガストロノミーツーリズム診断`;
+        document.getElementById('shareTwitter').href = `https://twitter.com/share?text=${encodeURIComponent(twitterText)}&url=${encodeURIComponent(baseUrl)}`;
+
+        // Facebook
+        document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(baseUrl)}`;
+
+        // LINE
+        const lineText = `私の診断結果は「${resultType}」でした！`;
+        document.getElementById('shareLine').href = `https://line.me/R/msg/text/?${encodeURIComponent(lineText + " " + baseUrl)}`;
+
+        // Instagramシェアボタン
+        document.getElementById('copyInstagram').addEventListener('click', function () {
+            const instagramText = `私の診断結果は「${resultType}」でした！\n${typeDescriptions[resultType]}\n#ガストロノミーツーリズム診断\nURL: ${baseUrl}`;
+            navigator.clipboard.writeText(instagramText)
+                .then(() => alert("診断結果がコピーされました！Instagramでシェアしてください。"))
+                .catch(err => alert("コピーに失敗しました。"));
+        });
+    </script>
+</body>
+</html>
 
