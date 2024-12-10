@@ -752,43 +752,49 @@
         "映え狙いの美食家 (Insta-Gastronome)": [2, 18]
     };
         
-     document.getElementById("submitBtn").addEventListener("click", function () {
-         const form = document.forms["quizForm"];
-         const totalQuestions = 20; // 質問数を設定
-         const scores = {};
+    document.getElementById("submitBtn").addEventListener("click", function () {
+    const form = document.forms["quizForm"];
+    const totalQuestions = 20; // 質問数
+    const scores = {};
 
-         // 初期化
-         Object.keys(typeMapping).forEach(type => scores[type] = 0);
+    // 初期化: 各タイプのスコアを0に設定
+    Object.keys(typeMapping).forEach(type => scores[type] = 0);
 
-         // 未回答チェック用フラグ
-         let allAnswered = true;
+    // 未回答チェック用フラグ
+    let allAnswered = true;
 
-         // 質問ごとの回答をスコアに加算
-         for (let i = 1; i <= totalQuestions; i++) {
-             const answer = form[`q${i}`]?.value;
-             if (!answer) {
-                 allAnswered = false; // 未回答がある場合
-                 break;
-             }
+    // 質問ごとの回答をスコアに加算
+    for (let i = 1; i <= totalQuestions; i++) {
+        const answer = form[`q${i}`]?.value;
+        
+        // デバッグ: 各質問の回答状況をログ出力
+        console.log(`質問${i}の回答:`, answer);
 
-             const answerScore = 7 - parseInt(answer); // スコア計算
-             Object.keys(typeMapping).forEach(type => {
-                 if (typeMapping[type].includes(i)) {
-                     scores[type] += answerScore;
-                 }
-             });
-         }
+        if (!answer) {
+            // 未回答がある場合、フラグをfalseにする
+            allAnswered = false;
 
-         // 未回答がある場合の警告
-         if (!allAnswered) {
-             alert("すべての質問に回答してください。");
-             return;
-         }
+            // デバッグ: 未回答の質問を特定
+            console.warn(`質問${i}が未回答です！`);
+        } else {
+            const answerScore = 7 - parseInt(answer); // スコア計算
+            Object.keys(typeMapping).forEach(type => {
+                if (typeMapping[type].includes(i)) {
+                    scores[type] += answerScore;
+                }
+            });
+        }
+    }
 
-         // スコアが最も高いタイプを決定
-         const resultType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+    // 未回答がある場合の警告
+    if (!allAnswered) {
+        alert("すべての質問に回答してください。");
+        return;
+    }
 
-         // 結果ページに遷移し、結果をクエリパラメータで渡す
-         window.location.href = `result.html?type=${encodeURIComponent(resultType)}`;
-     });
-</script>
+    // スコアが最も高いタイプを決定
+    const resultType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+
+    // 結果ページに遷移し、結果をクエリパラメータで渡す
+    window.location.href = `result.html?type=${encodeURIComponent(resultType)}`;
+});
