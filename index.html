@@ -15,6 +15,108 @@
             text-align: center;
         }
         .question {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .question p {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        .option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .option input[type="radio"] {
+            display: none;
+        }
+        .option label {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .option input[type="radio"]:checked + label {
+            background-color: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+        .option span {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>ガストロノミーツーリズム診断</h1>
+    <form id="quizForm">
+        <!-- 質問例 -->
+        <div class="question">
+            <p>定期的に新しい友人を作ることを心掛けていますね。</p>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="q1-a1" name="q1" value="1">
+                    <label for="q1-a1"></label>
+                    <span>賛成する</span>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1-a2" name="q1" value="2">
+                    <label for="q1-a2"></label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1-a3" name="q1" value="3">
+                    <label for="q1-a3"></label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1-a4" name="q1" value="4">
+                    <label for="q1-a4"></label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1-a5" name="q1" value="5">
+                    <label for="q1-a5"></label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1-a6" name="q1" value="6">
+                    <label for="q1-a6"></label>
+                    <span>反対する</span>
+                </div>
+            </div>
+        </div>
+        <!-- 他の質問も同様に追加 -->
+        <button type="button" id="submitBtn">診断結果を見る</button>
+    </form>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ガストロノミーツーリズム診断</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .question {
             margin-bottom: 20px;
         }
         .question p {
