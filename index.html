@@ -752,39 +752,33 @@
         "映え狙いの美食家 (Insta-Gastronome)": [2, 18]
     };
         
-    document.getElementById("submitBtn").addEventListener("click", function () {
-    const form = document.forms["quizForm"];
-    const totalQuestions = 20; // 質問数
+   document.getElementById("submitBtn").addEventListener("click", function () {
+    const questions = document.querySelectorAll(".question"); // 質問全体を取得
+    const totalQuestions = questions.length;
     const scores = {};
+    let allAnswered = true;
 
     // 初期化: 各タイプのスコアを0に設定
     Object.keys(typeMapping).forEach(type => scores[type] = 0);
 
-    // 未回答チェック用フラグ
-    let allAnswered = true;
+    // 質問ごとの回答を確認
+    questions.forEach((question, index) => {
+        const questionNumber = index + 1;
+        const selectedAnswer = question.querySelector(`input[name="q${questionNumber}"]:checked`); // 選択されたラジオボタン
 
-    // 質問ごとの回答をスコアに加算
-    for (let i = 1; i <= totalQuestions; i++) {
-        const answer = form[`q${i}`]?.value;
-        
-        // デバッグ: 各質問の回答状況をログ出力
-        console.log(`質問${i}の回答:`, answer);
-
-        if (!answer) {
-            // 未回答がある場合、フラグをfalseにする
+        if (!selectedAnswer) {
+            // 未回答の場合
             allAnswered = false;
-
-            // デバッグ: 未回答の質問を特定
-            console.warn(`質問${i}が未回答です！`);
+            console.warn(`質問${questionNumber}が未回答です！`); // デバッグ用
         } else {
-            const answerScore = 7 - parseInt(answer); // スコア計算
+            const answerScore = 7 - parseInt(selectedAnswer.value); // スコア計算
             Object.keys(typeMapping).forEach(type => {
-                if (typeMapping[type].includes(i)) {
+                if (typeMapping[type].includes(questionNumber)) {
                     scores[type] += answerScore;
                 }
             });
         }
-    }
+    });
 
     // 未回答がある場合の警告
     if (!allAnswered) {
@@ -798,3 +792,4 @@
     // 結果ページに遷移し、結果をクエリパラメータで渡す
     window.location.href = `result.html?type=${encodeURIComponent(resultType)}`;
 });
+</script>
