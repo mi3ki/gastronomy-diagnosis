@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ガストロノミーツーリズム診断</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .question { margin-bottom: 20px; }
+        .result { margin-top: 30px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>ガストロノミーツーリズム診断</h1>
+    <form id="quizForm">
+        <div class="question">
+            <p>地元の特産品を試すことに興味がありますか？</p>
+            <input type="radio" name="q1" value="1"> はい
+            <input type="radio" name="q1" value="0"> いいえ
+        </div>
+        <div class="question">
+            <p>新しい料理に挑戦するのが好きですか？</p>
+            <input type="radio" name="q2" value="1"> はい
+            <input type="radio" name="q2" value="0"> いいえ
+        </div>
+        <button type="button" id="submitBtn">結果を見る</button>
+    </form>
+    <div class="result" id="result"></div>
+
+    <script>
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const form = document.forms['quizForm'];
+            let score = 0;
+
+            for (let i = 1; i <= 2; i++) {
+                const answer = form[`q${i}`].value;
+                score += parseInt(answer || "0");
+            }
+
+            const result = score > 1 ? "冒険的グルメハンター" : "文化体験型フードラバー";
+            document.getElementById('result').innerText = `あなたのタイプは: ${result}`;
+        });
+    </script>
+</body>
+</html>
