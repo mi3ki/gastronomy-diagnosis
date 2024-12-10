@@ -58,91 +58,6 @@
             margin-top: 10px;
             font-size: 14px;
         }
-    </style>
-</head>
-<body>
-    <h1>ガストロノミーツーリズム診断</h1>
-    <form id="quizForm">
-        <!-- 質問例 -->
-        <div class="question">
-            <p>定期的に新しい友人を作ることを心掛けていますね。</p>
-            <div class="options">
-                <div class="option">
-                    <input type="radio" id="q1-a1" name="q1" value="1">
-                    <label for="q1-a1"></label>
-                    <span>賛成する</span>
-                </div>
-                <div class="option">
-                    <input type="radio" id="q1-a2" name="q1" value="2">
-                    <label for="q1-a2"></label>
-                </div>
-                <div class="option">
-                    <input type="radio" id="q1-a3" name="q1" value="3">
-                    <label for="q1-a3"></label>
-                </div>
-                <div class="option">
-                    <input type="radio" id="q1-a4" name="q1" value="4">
-                    <label for="q1-a4"></label>
-                </div>
-                <div class="option">
-                    <input type="radio" id="q1-a5" name="q1" value="5">
-                    <label for="q1-a5"></label>
-                </div>
-                <div class="option">
-                    <input type="radio" id="q1-a6" name="q1" value="6">
-                    <label for="q1-a6"></label>
-                    <span>反対する</span>
-                </div>
-            </div>
-        </div>
-        <!-- 他の質問も同様に追加 -->
-        <button type="button" id="submitBtn">診断結果を見る</button>
-    </form>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ガストロノミーツーリズム診断</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f9f9f9;
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        .question {
-            margin-bottom: 20px;
-        }
-        .question p {
-            font-weight: bold;
-        }
-        .question label {
-            display: block;
-            margin: 10px 0;
-            padding: 10px;
-            font-size: 18px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .question label:hover {
-            background-color: #f0f0f0;
-        }
-        .question input[type="radio"] {
-            display: none;
-        }
-        .question input[type="radio"]:checked + label {
-            background-color: #4CAF50;
-            color: white;
-            border-color: #4CAF50;
-        }
         .result {
             margin-top: 30px;
             font-weight: bold;
@@ -171,36 +86,680 @@
         <!-- 質問例 -->
         <div class="question">
             <p>旅行中、地元の人々と会話を楽しむことが好きだ。</p>
-            <input type="radio" id="q1a1" name="q1" value="1">
-            <label for="q1a1">とても当てはまる</label>
-            <input type="radio" id="q1a2" name="q1" value="2">
-            <label for="q1a2">当てはまる</label>
-            <input type="radio" id="q1a3" name="q1" value="3">
-            <label for="q1a3">やや当てはまる</label>
-            <input type="radio" id="q1a4" name="q1" value="4">
-            <label for="q1a4">やや当てはまらない</label>
-            <input type="radio" id="q1a5" name="q1" value="5">
-            <label for="q1a5">当てはまらない</label>
-            <input type="radio" id="q1a6" name="q1" value="6">
-            <label for="q1a6">全く当てはまらない</label>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="q1-a1" name="q1" value="1">
+                    <label for="q1-a1"></label>
+                    <span>当てはまる</span>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1-a2" name="q1" value="2">
+                    <label for="q1-a2"></label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1-a3" name="q1" value="3">
+                    <label for="q1-a3"></label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1-a4" name="q1" value="4">
+                    <label for="q1-a4"></label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1-a5" name="q1" value="5">
+                    <label for="q1-a5"></label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1-a6" name="q1" value="6">
+                    <label for="q1-a6"></label>
+                    <span>当てはまらない</span>
+                </div>
+            </div>
         </div>
-        <!-- 他の質問も同様に記載 -->
+        <div class="question">
+    <p>人混みや賑やかな観光地よりも静かな場所でリラックスするのが好きだ。</p>
+    <div class="options">
+        <div class="option">
+            <input type="radio" id="q2-a1" name="q2" value="1">
+            <label for="q2-a1"></label>
+            <span>当てはまる</span>
+        </div>
+        <div class="option">
+            <input type="radio" id="q2-a2" name="q2" value="2">
+            <label for="q2-a2"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q2-a3" name="q2" value="3">
+            <label for="q2-a3"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q2-a4" name="q2" value="4">
+            <label for="q2-a4"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q2-a5" name="q2" value="5">
+            <label for="q2-a5"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q2-a6" name="q2" value="6">
+            <label for="q2-a6"></label>
+            <span>当てはまらない</span>
+        </div>
+    </div>
+</div>
+
+<div class="question">
+    <p>初めて訪れる場所でも観光地の人たちと自然に打ち解けることができる。</p>
+    <div class="options">
+        <div class="option">
+            <input type="radio" id="q3-a1" name="q3" value="1">
+            <label for="q3-a1"></label>
+            <span>当てはまる</span>
+        </div>
+        <div class="option">
+            <input type="radio" id="q3-a2" name="q3" value="2">
+            <label for="q3-a2"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q3-a3" name="q3" value="3">
+            <label for="q3-a3"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q3-a4" name="q3" value="4">
+            <label for="q3-a4"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q3-a5" name="q3" value="5">
+            <label for="q3-a5"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q3-a6" name="q3" value="6">
+            <label for="q3-a6"></label>
+            <span>当てはまらない</span>
+        </div>
+    </div>
+</div>
+
+<div class="question">
+    <p>地元の人が集まるイベントやフェスティバルに参加するのが楽しい。</p>
+    <div class="options">
+        <div class="option">
+            <input type="radio" id="q4-a1" name="q4" value="1">
+            <label for="q4-a1"></label>
+            <span>当てはまる</span>
+        </div>
+        <div class="option">
+            <input type="radio" id="q4-a2" name="q4" value="2">
+            <label for="q4-a2"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q4-a3" name="q4" value="3">
+            <label for="q4-a3"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q4-a4" name="q4" value="4">
+            <label for="q4-a4"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q4-a5" name="q4" value="5">
+            <label for="q4-a5"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q4-a6" name="q4" value="6">
+            <label for="q4-a6"></label>
+            <span>当てはまらない</span>
+        </div>
+    </div>
+</div>
+        <!-- 質問5 -->
+<div class="question">
+    <p>事前に立てたスケジュール通りに行動したい。</p>
+    <div class="options">
+        <div class="option">
+            <input type="radio" id="q5-a1" name="q5" value="1">
+            <label for="q5-a1"></label>
+            <span>当てはまる</span>
+        </div>
+        <div class="option">
+            <input type="radio" id="q5-a2" name="q5" value="2">
+            <label for="q5-a2"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q5-a3" name="q5" value="3">
+            <label for="q5-a3"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q5-a4" name="q5" value="4">
+            <label for="q5-a4"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q5-a5" name="q5" value="5">
+            <label for="q5-a5"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q5-a6" name="q5" value="6">
+            <label for="q5-a6"></label>
+            <span>当てはまらない</span>
+        </div>
+    </div>
+</div>
+
+<!-- 質問6 -->
+<div class="question">
+    <p>スケジュール通りに進まなくても、楽しむことができる。</p>
+    <div class="options">
+        <div class="option">
+            <input type="radio" id="q6-a1" name="q6" value="1">
+            <label for="q6-a1"></label>
+            <span>当てはまる</span>
+        </div>
+        <div class="option">
+            <input type="radio" id="q6-a2" name="q6" value="2">
+            <label for="q6-a2"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q6-a3" name="q6" value="3">
+            <label for="q6-a3"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q6-a4" name="q6" value="4">
+            <label for="q6-a4"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q6-a5" name="q6" value="5">
+            <label for="q6-a5"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q6-a6" name="q6" value="6">
+            <label for="q6-a6"></label>
+            <span>当てはまらない</span>
+        </div>
+    </div>
+</div>
+
+<!-- 質問7 -->
+<div class="question">
+    <p>旅行先における食事や観光地は自分であらかじめ選んでおきたい。</p>
+    <div class="options">
+        <div class="option">
+            <input type="radio" id="q7-a1" name="q7" value="1">
+            <label for="q7-a1"></label>
+            <span>当てはまる</span>
+        </div>
+        <div class="option">
+            <input type="radio" id="q7-a2" name="q7" value="2">
+            <label for="q7-a2"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q7-a3" name="q7" value="3">
+            <label for="q7-a3"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q7-a4" name="q7" value="4">
+            <label for="q7-a4"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q7-a5" name="q7" value="5">
+            <label for="q7-a5"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q7-a6" name="q7" value="6">
+            <label for="q7-a6"></label>
+            <span>当てはまらない</span>
+        </div>
+    </div>
+</div>
+
+<!-- 質問8 -->
+<div class="question">
+    <p>旅行先では自由に行動し、自分だけの体験を追求したい。</p>
+    <div class="options">
+        <div class="option">
+            <input type="radio" id="q8-a1" name="q8" value="1">
+            <label for="q8-a1"></label>
+            <span>当てはまる</span>
+        </div>
+        <div class="option">
+            <input type="radio" id="q8-a2" name="q8" value="2">
+            <label for="q8-a2"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q8-a3" name="q8" value="3">
+            <label for="q8-a3"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q8-a4" name="q8" value="4">
+            <label for="q8-a4"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q8-a5" name="q8" value="5">
+            <label for="q8-a5"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q8-a6" name="q8" value="6">
+            <label for="q8-a6"></label>
+            <span>当てはまらない</span>
+        </div>
+    </div>
+</div>
+
+<!-- 質問9 -->
+<div class="question">
+    <p>その土地でしか食べられない料理や伝統的な食文化を体験することに興味がある。</p>
+    <div class="options">
+        <div class="option">
+            <input type="radio" id="q9-a1" name="q9" value="1">
+            <label for="q9-a1"></label>
+            <span>当てはまる</span>
+        </div>
+        <div class="option">
+            <input type="radio" id="q9-a2" name="q9" value="2">
+            <label for="q9-a2"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q9-a3" name="q9" value="3">
+            <label for="q9-a3"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q9-a4" name="q9" value="4">
+            <label for="q9-a4"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q9-a5" name="q9" value="5">
+            <label for="q9-a5"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q9-a6" name="q9" value="6">
+            <label for="q9-a6"></label>
+            <span>当てはまらない</span>
+        </div>
+    </div>
+</div>
+
+<!-- 質問10 -->
+<div class="question">
+    <p>珍しい料理や新しい食材に挑戦するのが好きだ。</p>
+    <div class="options">
+        <div class="option">
+            <input type="radio" id="q10-a1" name="q10" value="1">
+            <label for="q10-a1"></label>
+            <span>当てはまる</span>
+        </div>
+        <div class="option">
+            <input type="radio" id="q10-a2" name="q10" value="2">
+            <label for="q10-a2"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q10-a3" name="q10" value="3">
+            <label for="q10-a3"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q10-a4" name="q10" value="4">
+            <label for="q10-a4"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q10-a5" name="q10" value="5">
+            <label for="q10-a5"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q10-a6" name="q10" value="6">
+            <label for="q10-a6"></label>
+            <span>当てはまらない</span>
+        </div>
+    </div>
+</div>
+        <!-- 質問11 -->
+<div class="question">
+    <p>その土地の料理だけでなく、食材の背景や調理方法を学びたいと思う。</p>
+    <div class="options">
+        <div class="option">
+            <input type="radio" id="q11-a1" name="q11" value="1">
+            <label for="q11-a1"></label>
+            <span>当てはまる</span>
+        </div>
+        <div class="option">
+            <input type="radio" id="q11-a2" name="q11" value="2">
+            <label for="q11-a2"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q11-a3" name="q11" value="3">
+            <label for="q11-a3"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q11-a4" name="q11" value="4">
+            <label for="q11-a4"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q11-a5" name="q11" value="5">
+            <label for="q11-a5"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q11-a6" name="q11" value="6">
+            <label for="q11-a6"></label>
+            <span>当てはまらない</span>
+        </div>
+    </div>
+</div>
+
+<!-- 質問12 -->
+<div class="question">
+    <p>食事よりも歴史的な観光地や文化的な体験を優先することが多い。</p>
+    <div class="options">
+        <div class="option">
+            <input type="radio" id="q12-a1" name="q12" value="1">
+            <label for="q12-a1"></label>
+            <span>当てはまる</span>
+        </div>
+        <div class="option">
+            <input type="radio" id="q12-a2" name="q12" value="2">
+            <label for="q12-a2"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q12-a3" name="q12" value="3">
+            <label for="q12-a3"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q12-a4" name="q12" value="4">
+            <label for="q12-a4"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q12-a5" name="q12" value="5">
+            <label for="q12-a5"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q12-a6" name="q12" value="6">
+            <label for="q12-a6"></label>
+            <span>当てはまらない</span>
+        </div>
+    </div>
+</div>
+
+<!-- 質問13 -->
+<div class="question">
+    <p>一つの場所に長く滞在し、その場所の雰囲気や景色をじっくり味わうのが好きだ。</p>
+    <div class="options">
+        <div class="option">
+            <input type="radio" id="q13-a1" name="q13" value="1">
+            <label for="q13-a1"></label>
+            <span>当てはまる</span>
+        </div>
+        <div class="option">
+            <input type="radio" id="q13-a2" name="q13" value="2">
+            <label for="q13-a2"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q13-a3" name="q13" value="3">
+            <label for="q13-a3"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q13-a4" name="q13" value="4">
+            <label for="q13-a4"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q13-a5" name="q13" value="5">
+            <label for="q13-a5"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q13-a6" name="q13" value="6">
+            <label for="q13-a6"></label>
+            <span>当てはまらない</span>
+        </div>
+    </div>
+</div>
+
+<!-- 質問14 -->
+<div class="question">
+    <p>限られた時間の中で、できるだけ多くの観光地を巡りたい。</p>
+    <div class="options">
+        <div class="option">
+            <input type="radio" id="q14-a1" name="q14" value="1">
+            <label for="q14-a1"></label>
+            <span>当てはまる</span>
+        </div>
+        <div class="option">
+            <input type="radio" id="q14-a2" name="q14" value="2">
+            <label for="q14-a2"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q14-a3" name="q14" value="3">
+            <label for="q14-a3"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q14-a4" name="q14" value="4">
+            <label for="q14-a4"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q14-a5" name="q14" value="5">
+            <label for="q14-a5"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q14-a6" name="q14" value="6">
+            <label for="q14-a6"></label>
+            <span>当てはまらない</span>
+        </div>
+    </div>
+</div>
+
+<!-- 質問15 -->
+<div class="question">
+    <p>宿泊施設は豪華で快適なホテルを選びたい。</p>
+    <div class="options">
+        <div class="option">
+            <input type="radio" id="q15-a1" name="q15" value="1">
+            <label for="q15-a1"></label>
+            <span>当てはまる</span>
+        </div>
+        <div class="option">
+            <input type="radio" id="q15-a2" name="q15" value="2">
+            <label for="q15-a2"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q15-a3" name="q15" value="3">
+            <label for="q15-a3"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q15-a4" name="q15" value="4">
+            <label for="q15-a4"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q15-a5" name="q15" value="5">
+            <label for="q15-a5"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q15-a6" name="q15" value="6">
+            <label for="q15-a6"></label>
+            <span>当てはまらない</span>
+        </div>
+    </div>
+</div>
+
+<!-- 質問16 -->
+<div class="question">
+    <p>自然の中でのアクティビティ（農業体験やアウトドア）が旅行の一番の楽しみだ。</p>
+    <div class="options">
+        <div class="option">
+            <input type="radio" id="q16-a1" name="q16" value="1">
+            <label for="q16-a1"></label>
+            <span>当てはまる</span>
+        </div>
+        <div class="option">
+            <input type="radio" id="q16-a2" name="q16" value="2">
+            <label for="q16-a2"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q16-a3" name="q16" value="3">
+            <label for="q16-a3"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q16-a4" name="q16" value="4">
+            <label for="q16-a4"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q16-a5" name="q16" value="5">
+            <label for="q16-a5"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q16-a6" name="q16" value="6">
+            <label for="q16-a6"></label>
+            <span>当てはまらない</span>
+        </div>
+    </div>
+</div>
+
+<!-- 質問17 -->
+<div class="question">
+    <p>地元で採れた新鮮な食材を使った料理に興味がある。</p>
+    <div class="options">
+        <div class="option">
+            <input type="radio" id="q17-a1" name="q17" value="1">
+            <label for="q17-a1"></label>
+            <span>当てはまる</span>
+        </div>
+        <div class="option">
+            <input type="radio" id="q17-a2" name="q17" value="2">
+            <label for="q17-a2"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q17-a3" name="q17" value="3">
+            <label for="q17-a3"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q17-a4" name="q17" value="4">
+            <label for="q17-a4"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q17-a5" name="q17" value="5">
+            <label for="q17-a5"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q17-a6" name="q17" value="6">
+            <label for="q17-a6"></label>
+            <span>当てはまらない</span>
+        </div>
+    </div>
+</div>
+
+<!-- 質問18 -->
+<div class="question">
+    <p>ビュッフェ形式で多くの料理を試せる食事スタイルが好きだ。</p>
+    <div class="options">
+        <div class="option">
+            <input type="radio" id="q18-a1" name="q18" value="1">
+            <label for="q18-a1"></label>
+            <span>当てはまる</span>
+        </div>
+        <div class="option">
+            <input type="radio" id="q18-a2" name="q18" value="2">
+            <label for="q18-a2"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q18-a3" name="q18" value="3">
+            <label for="q18-a3"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q18-a4" name="q18" value="4">
+            <label for="q18-a4"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q18-a5" name="q18" value="5">
+            <label for="q18-a5"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q18-a6" name="q18" value="6">
+            <label for="q18-a6"></label>
+            <span>当てはまらない</span>
+        </div>
+    </div>
+</div>
+
+<!-- 質問19 -->
+<div class="question">
+    <p>シェフや料理人との会話を楽しみながら食事をする体験をしてみたい。</p>
+    <div class="options">
+        <div class="option">
+            <input type="radio" id="q19-a1" name="q19" value="1">
+            <label for="q19-a1"></label>
+            <span>当てはまる</span>
+        </div>
+        <div class="option">
+            <input type="radio" id="q19-a2" name="q19" value="2">
+            <label for="q19-a2"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q19-a3" name="q19" value="3">
+            <label for="q19-a3"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q19-a4" name="q19" value="4">
+            <label for="q19-a4"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q19-a5" name="q19" value="5">
+            <label for="q19-a5"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q19-a6" name="q19" value="6">
+            <label for="q19-a6"></label>
+            <span>当てはまらない</span>
+        </div>
+    </div>
+</div>
+<div class="question">
+    <p>自分で収穫した食材を使って料理を作るワークショップに参加したい。</p>
+    <div class="options">
+        <div class="option">
+            <input type="radio" id="q20-a1" name="q20" value="1">
+            <label for="q20-a1"></label>
+            <span>当てはまる</span>
+        </div>
+        <div class="option">
+            <input type="radio" id="q20-a2" name="q20" value="2">
+            <label for="q20-a2"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q20-a3" name="q20" value="3">
+            <label for="q20-a3"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q20-a4" name="q20" value="4">
+            <label for="q20-a4"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q20-a5" name="q20" value="5">
+            <label for="q20-a5"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q20-a6" name="q20" value="6">
+            <label for="q20-a6"></label>
+            <span>当てはまらない</span>
+        </div>
+    </div>
+</div>
+        <!-- 他の質問も同様に -->
         <button type="button" id="submitBtn">診断結果を見る</button>
     </form>
     <div class="result" id="result"></div>
 
     <script>
-        const typeMapping = {
-            "地産地消探求者 (Local Explore)": [1, 3, 9, 17],
-            "冒険する食旅人 (Food Adventurist)": [2, 10, 18],
-            // 他のタイプも追加
-        };
+         const typeDescriptions = {
+        "地産地消探求者 (Local Explore)": "あなたは地元の味を求めて旅する“地産地消探求者”タイプ！地元の新鮮な食材や伝統料理に心を惹かれるようです。味わうだけでなく、その背景にある地元の人々の物語を大切にするあなたには、農家や漁港での収穫体験、田舎の隠れた名店を巡る旅がぴったりです！",
+        "冒険する食旅人 (Food Adventurist)": "あなたは未知の味覚を求める“冒険する食旅人”タイプ！珍しい食材や一風変わった調理法の料理に挑戦するのが大好きです。地元のフェスティバルや漁師町での特別な体験があなたを待っています。一歩踏み出すたびに、新しい世界が広がります！",
+        "食文化の継承者 (Heritage Food Seeker)": "あなたは食の歴史を深く楽しむ“食文化の継承者”タイプ！伝統的なレシピや食文化の背景を学び、体験することに情熱を感じます。老舗料亭での食事や、文化財に指定された食の名所を巡る旅があなたにぴったりです。",
+        "贅沢志向の美食家 (Luxury Gourmet)": "あなたは一流の味とサービスを追求する“贅沢志向の美食家”タイプ！高級感あふれるディナーコースや洗練された宿泊施設での食体験が好きなあなたには、特別なプライベートツアーや地元の一流シェフによる特別メニューがおすすめです。",
+        "自由な食べ歩き旅人 (Freedom Tasting Walker)": "あなたは自分のペースで旅を楽しむ“自由な食べ歩き旅人”タイプ！観光地での名物料理から道端の屋台グルメまで、偶然の出会いを楽しむことが得意です。予定に縛られず自由に動ける旅を満喫しましょう！",
+        "自然に優しい美食家 (Eco-Gastronome)": "あなたは環境を考えた食を愛する“自然に優しい美食家”タイプ！地元のオーガニック農園やエコファームでの体験が魅力的に映るあなたには、持続可能な農業や自然と調和した食文化を学べる旅がぴったりです。",
+        "美食冒険家 (Gourmet Adventurer)": "あなたは世界中の味を追い求める“美食冒険家”タイプ！普段味わうことのできないユニークな調理法にも興味津々。地元食材を使った創作料理が楽しめる旅があなたにおすすめです。",
+        "地元食の伝道師 (Community Food Ambassador)": "あなたは地元の食文化を広める“地元食の伝道師”タイプ！地元の特産品を活かした料理や食材の魅力を伝えることに喜びを感じます。農家や漁師との交流を通じて、地域の魅力を再発見する旅がぴったりです。",
+        "動き回る味覚探検家 (Dynamic Taste Explorer)": "あなたは観光地を精力的に巡る“動き回る味覚探検家”タイプ！アクティブに動きながら、幅広い食のジャンルを楽しむことが得意。観光スポットとご当地グルメを組み合わせたプランで、充実した旅を満喫しましょう。",
+        "伝統の味わい案内人 (Traditional Flavor Curator)": "あなたは昔ながらの味を愛する“伝統の味わい案内人”タイプ！老舗の味や代々受け継がれるレシピに心惹かれるあなたには、歴史とともに味わう食体験がぴったりです。時を超えた味わいを求めて、旅に出かけましょう。",
+        "シェフと語る美食家 (Chef’s Dialogue Enthusiast)": "あなたは料理人との交流を大切にする“シェフと語る美食家”タイプ！シェフや地元の料理人から直接調理のこだわりを聞く体験に興味津々。料理教室や体験がセットになった旅がぴったりです。",
+        "隠れ家グルメ探索者 (Hidden Plate Explorer)": "あなたは知る人ぞ知る名店を探す“隠れ家グルメ探索者”タイプ！大通りの名店よりも、静かで個性的なスポットを楽しむのが好きなあなたには、地元の人しか知らない隠れ家ツアーがぴったりです。",
+        "野生の食旅探検者 (Wild Food Adventurist)": "あなたは自然の恵みを楽しむ“野生の食旅探検者”タイプ！山菜採りや漁業体験を楽しむ旅が理想的。自然と触れ合う体験があなたを最高の旅に導くはずです！",
+        "料理体験愛好家 (Food Craft Enthusiast)": "あなたは自分で作る楽しさを追求する“料理体験愛好家”タイプ！収穫から調理までの一連の流れを楽しむワークショップが大好き。自分で作った料理を味わう充実感が得られる旅を探しましょう。",
+        "速攻型グルメハンター (Speedy Taste Seeker)": "あなたは限られた時間を効率的に使う“速攻型グルメハンター”タイプ！短時間で観光地を回りながら、話題のグルメを楽しむことに喜びを感じます。スピード感のあるツアーがぴったりです。",
+        "映え狙いの美食家 (Insta-Gastronome)": "あなたは見た目の美しさも重視する“映え狙いの美食家”タイプ！盛り付けの美しい料理やユニークな体験が好きなあなたには、SNS映えする体験型食スポットを巡る旅がぴったりです。"
+    };
 
-        const typeDescriptions = {
-            "地産地消探求者 (Local Explore)": "あなたは地元の味を求めて旅する“地産地消探求者”タイプ！...",
-            "冒険する食旅人 (Food Adventurist)": "あなたは未知の味覚を求める“冒険する食旅人”タイプ！...",
-            // 他の説明文も追加
-        };
+       
 
         document.getElementById("submitBtn").addEventListener("click", function () {
             const form = document.forms["quizForm"];
@@ -228,247 +787,20 @@
 </body>
 </html>
 
-        <div class="question">
-            <p>人混みや賑やかな観光地よりも静かな場所でリラックスするのが好きだ。</p>
-           <input type="radio" name="q2" value="1"> とても当てはまる
-            <input type="radio" name="q2" value="2"> 当てはまる
-            <input type="radio" name="q2" value="3"> やや当てはまる
-            <input type="radio" name="q2" value="4"> やや当てはまらない
-            <input type="radio" name="q2" value="5"> 当てはまらない
-            <input type="radio" name="q2" value="6"> 全く当てはまらない
-        </div>
-        <div class="question">
-            <p>初めて訪れる場所でも観光地の人たちと自然に打ち解けることができる。</p>
-            <input type="radio" name="q3" value="1"> とても当てはまる
-            <input type="radio" name="q3" value="2"> 当てはまる
-            <input type="radio" name="q3" value="3"> やや当てはまる
-            <input type="radio" name="q3" value="4"> やや当てはまらない
-            <input type="radio" name="q3" value="5"> 当てはまらない
-            <input type="radio" name="q3" value="6"> 全く当てはまらない
-        </div>
-        <div class="question">
-            <p>地元の人が集まるイベントやフェスティバルに参加するのが楽しい。</p>
-            <input type="radio" name="q4" value="1"> とても当てはまる
-            <input type="radio" name="q4" value="2"> 当てはまる
-            <input type="radio" name="q4" value="3"> やや当てはまる
-            <input type="radio" name="q4" value="4"> やや当てはまらない
-            <input type="radio" name="q4" value="5"> 当てはまらない
-            <input type="radio" name="q4" value="6"> 全く当てはまらない
-        </div>
-        <div class="question">
-            <p>事前に立てたスケジュール通りに行動したい。</p>
-            <input type="radio" name="q5" value="1"> とても当てはまる
-            <input type="radio" name="q5" value="2"> 当てはまる
-            <input type="radio" name="q5" value="3"> やや当てはまる
-            <input type="radio" name="q5" value="4"> やや当てはまらない
-            <input type="radio" name="q5" value="5"> 当てはまらない
-            <input type="radio" name="q5" value="6"> 全く当てはまらない
-        </div>
-        <div class="question">
-            <p>スケジュール通りに進まなくても、楽しむことができる。</p>
-            <input type="radio" name="q6" value="1"> とても当てはまる
-            <input type="radio" name="q6" value="2"> 当てはまる
-            <input type="radio" name="q6" value="3"> やや当てはまる
-            <input type="radio" name="q6" value="4"> やや当てはまらない
-            <input type="radio" name="q6" value="5"> 当てはまらない
-            <input type="radio" name="q6" value="6"> 全く当てはまらない
-        </div>
-        <div class="question">
-            <p>旅行先における食事や観光地は自分であらかじめ選んでおきたい。</p>
-            <input type="radio" name="q7" value="1"> とても当てはまる
-            <input type="radio" name="q7" value="2"> 当てはまる
-            <input type="radio" name="q7" value="3"> やや当てはまる
-            <input type="radio" name="q7" value="4"> やや当てはまらない
-            <input type="radio" name="q7" value="5"> 当てはまらない
-            <input type="radio" name="q7" value="6"> 全く当てはまらない
-        </div>
-        <div class="question">
-            <p>旅行先では自由に行動し、自分だけの体験を追求したい。</p>
-           <input type="radio" name="q8" value="1"> とても当てはまる
-            <input type="radio" name="q8" value="2"> 当てはまる
-            <input type="radio" name="q8" value="3"> やや当てはまる
-            <input type="radio" name="q8" value="4"> やや当てはまらない
-            <input type="radio" name="q8" value="5"> 当てはまらない
-            <input type="radio" name="q8" value="6"> 全く当てはまらない
-        </div>
-        <div class="question">
-            <p>その土地でしか食べられない料理や伝統的な食文化を体験することに興味がある。</p>
-           <input type="radio" name="q9" value="1"> とても当てはまる
-            <input type="radio" name="q9" value="2"> 当てはまる
-            <input type="radio" name="q9" value="3"> やや当てはまる
-            <input type="radio" name="q9" value="4"> やや当てはまらない
-            <input type="radio" name="q9" value="5"> 当てはまらない
-            <input type="radio" name="q9" value="6"> 全く当てはまらない
-        </div>
-        <div class="question">
-            <p>珍しい料理や新しい食材に挑戦するのが好きだ。</p>
-           <input type="radio" name="q10" value="1"> とても当てはまる
-            <input type="radio" name="q10" value="2"> 当てはまる
-            <input type="radio" name="q10" value="3"> やや当てはまる
-            <input type="radio" name="q10" value="4"> やや当てはまらない
-            <input type="radio" name="q10" value="5"> 当てはまらない
-            <input type="radio" name="q10" value="6"> 全く当てはまらない
-        </div>
-        <div class="question">
-            <p>その土地の料理だけでなく、食材の背景や調理方法を学びたいと思う。</p>
-           <input type="radio" name="q11" value="1"> とても当てはまる
-            <input type="radio" name="q11" value="2"> 当てはまる
-            <input type="radio" name="q11" value="3"> やや当てはまる
-            <input type="radio" name="q11" value="4"> やや当てはまらない
-            <input type="radio" name="q11" value="5"> 当てはまらない
-            <input type="radio" name="q11" value="6"> 全く当てはまらない
-        </div>
-        <div class="question">
-            <p>食事よりも歴史的な観光地や文化的な体験を優先することが多い。</p>
-            <input type="radio" name="q12" value="1"> とても当てはまる
-            <input type="radio" name="q12" value="2"> 当てはまる
-            <input type="radio" name="q12" value="3"> やや当てはまる
-            <input type="radio" name="q12" value="4"> やや当てはまらない
-            <input type="radio" name="q12" value="5"> 当てはまらない
-            <input type="radio" name="q12" value="6"> 全く当てはまらない
-        </div>
-        <div class="question">
-            <p>一つの場所に長く滞在し、その場所の雰囲気や景色をじっくり味わうのが好きだ。</p>
-           <input type="radio" name="q13" value="1"> とても当てはまる
-            <input type="radio" name="q13" value="2"> 当てはまる
-            <input type="radio" name="q13" value="3"> やや当てはまる
-            <input type="radio" name="q13" value="4"> やや当てはまらない
-            <input type="radio" name="q13" value="5"> 当てはまらない
-            <input type="radio" name="q13" value="6"> 全く当てはまらない
-        </div>
-        <div class="question">
-            <p>限られた時間の中で、できるだけ多くの観光地を巡りたい。</p>
-            <input type="radio" name="q14" value="1"> とても当てはまる
-            <input type="radio" name="q14" value="2"> 当てはまる
-            <input type="radio" name="q14" value="3"> やや当てはまる
-            <input type="radio" name="q14" value="4"> やや当てはまらない
-            <input type="radio" name="q14" value="5"> 当てはまらない
-            <input type="radio" name="q14" value="6"> 全く当てはまらない
-        </div>
-        <div class="question">
-            <p>宿泊施設は豪華で快適なホテルを選びたい。</p>
-          <input type="radio" name="q15" value="1"> とても当てはまる
-            <input type="radio" name="q15" value="2"> 当てはまる
-            <input type="radio" name="q15" value="3"> やや当てはまる
-            <input type="radio" name="q15" value="4"> やや当てはまらない
-            <input type="radio" name="q15" value="5"> 当てはまらない
-            <input type="radio" name="q15" value="6"> 全く当てはまらない
-        </div>
-        <div class="question">
-            <p>自然の中でのアクティビティ（農業体験やアウトドア）が旅行の一番の楽しみだ。</p>
-            <input type="radio" name="q16" value="1"> とても当てはまる
-            <input type="radio" name="q16" value="2"> 当てはまる
-            <input type="radio" name="q16" value="3"> やや当てはまる
-            <input type="radio" name="q16" value="4"> やや当てはまらない
-            <input type="radio" name="q16" value="5"> 当てはまらない
-            <input type="radio" name="q16" value="6"> 全く当てはまらない
-        </div>
-        <div class="question">
-            <p>地元で採れた新鮮な食材を使った料理に興味がある。</p>
-            <input type="radio" name="q17" value="1"> とても当てはまる
-            <input type="radio" name="q17" value="2"> 当てはまる
-            <input type="radio" name="q17" value="3"> やや当てはまる
-            <input type="radio" name="q17" value="4"> やや当てはまらない
-            <input type="radio" name="q17" value="5"> 当てはまらない
-            <input type="radio" name="q17" value="6"> 全く当てはまらない
-        </div>
-        <div class="question">
-            <p>ビュッフェ形式で多くの料理を試せる食事スタイルが好きだ。</p>
-           <input type="radio" name="q18" value="1"> とても当てはまる
-            <input type="radio" name="q18" value="2"> 当てはまる
-            <input type="radio" name="q18" value="3"> やや当てはまる
-            <input type="radio" name="q18" value="4"> やや当てはまらない
-            <input type="radio" name="q18" value="5"> 当てはまらない
-            <input type="radio" name="q18" value="6"> 全く当てはまらない
-        </div>
-        <div class="question">
-            <p>シェフや料理人との会話を楽しみながら食事をする体験をしてみたい。</p>
-            <input type="radio" name="q19" value="1"> とても当てはまる
-            <input type="radio" name="q19" value="2"> 当てはまる
-            <input type="radio" name="q19" value="3"> やや当てはまる
-            <input type="radio" name="q19" value="4"> やや当てはまらない
-            <input type="radio" name="q19" value="5"> 当てはまらない
-            <input type="radio" name="q19" value="6"> 全く当てはまらない
-        </div>
-        <div class="question">
-            <p>自分で収穫した食材を使って料理を作るワークショップに参加したい。</p>
-           <input type="radio" name="q20" value="1"> とても当てはまる
-            <input type="radio" name="q20" value="2"> 当てはまる
-            <input type="radio" name="q20" value="3"> やや当てはまる
-            <input type="radio" name="q20" value="4"> やや当てはまらない
-            <input type="radio" name="q20" value="5"> 当てはまらない
-            <input type="radio" name="q20" value="6"> 全く当てはまらない
-        </div>
-        <!-- ... -->
-        <!-- 全部で20個分の質問を同じ形式で追加 -->
 
-        <button type="button" id="submitBtn">診断結果を見る</button>
-    </form>
-    <div class="result" id="result"></div>
 
-    <script>
-    const typeMapping = {
-        "地産地消探求者 (Local Explore)": [1, 3, 9, 17],
-        "冒険する食旅人 (Food Adventurist)": [2, 10, 18],
-        "食文化の継承者 (Heritage Food Seeker)": [11, 12, 14],
-        "贅沢志向の美食家 (Luxury Gourmet)": [15, 4, 16],
-        "自由な食べ歩き旅人 (Freedom Tasting Walker)": [8, 5],
-        "自然に優しい美食家 (Eco-Gastronome)": [6, 13, 19, 20],
-        "美食冒険家 (Gourmet Adventurer)": [7, 20],
-        "地元食の伝道師 (Community Food Ambassador)": [1, 4],
-        "動き回る味覚探検家 (Dynamic Taste Explorer)": [3, 14, 18],
-        "伝統の味わい案内人 (Traditional Flavor Curator)": [9, 10, 11],
-        "シェフと語る美食家 (Chef’s Dialogue Enthusiast)": [12, 19],
-        "隠れ家グルメ探索者 (Hidden Plate Explorer)": [13, 7],
-        "野生の食旅探検者 (Wild Food Adventurist)": [16, 20],
-        "料理体験愛好家 (Food Craft Enthusiast)": [19, 20],
-        "速攻型グルメハンター (Speedy Taste Seeker)": [8, 14],
-        "映え狙いの美食家 (Insta-Gastronome)": [2, 18]
-    };
 
-    const typeDescriptions = {
-        "地産地消探求者 (Local Explore)": "あなたは地元の味を求めて旅する“地産地消探求者”タイプ！地元の新鮮な食材や伝統料理に心を惹かれるようです。味わうだけでなく、その背景にある地元の人々の物語を大切にするあなたには、農家や漁港での収穫体験、田舎の隠れた名店を巡る旅がぴったりです！",
-        "冒険する食旅人 (Food Adventurist)": "あなたは未知の味覚を求める“冒険する食旅人”タイプ！珍しい食材や一風変わった調理法の料理に挑戦するのが大好きです。地元のフェスティバルや漁師町での特別な体験があなたを待っています。一歩踏み出すたびに、新しい世界が広がります！",
-        "食文化の継承者 (Heritage Food Seeker)": "あなたは食の歴史を深く楽しむ“食文化の継承者”タイプ！伝統的なレシピや食文化の背景を学び、体験することに情熱を感じます。老舗料亭での食事や、文化財に指定された食の名所を巡る旅があなたにぴったりです。",
-        "贅沢志向の美食家 (Luxury Gourmet)": "あなたは一流の味とサービスを追求する“贅沢志向の美食家”タイプ！高級感あふれるディナーコースや洗練された宿泊施設での食体験が好きなあなたには、特別なプライベートツアーや地元の一流シェフによる特別メニューがおすすめです。",
-        "自由な食べ歩き旅人 (Freedom Tasting Walker)": "あなたは自分のペースで旅を楽しむ“自由な食べ歩き旅人”タイプ！観光地での名物料理から道端の屋台グルメまで、偶然の出会いを楽しむことが得意です。予定に縛られず自由に動ける旅を満喫しましょう！",
-        "自然に優しい美食家 (Eco-Gastronome)": "あなたは環境を考えた食を愛する“自然に優しい美食家”タイプ！地元のオーガニック農園やエコファームでの体験が魅力的に映るあなたには、持続可能な農業や自然と調和した食文化を学べる旅がぴったりです。",
-        "美食冒険家 (Gourmet Adventurer)": "あなたは世界中の味を追い求める“美食冒険家”タイプ！普段味わうことのできないユニークな調理法にも興味津々。地元食材を使った創作料理が楽しめる旅があなたにおすすめです。",
-        "地元食の伝道師 (Community Food Ambassador)": "あなたは地元の食文化を広める“地元食の伝道師”タイプ！地元の特産品を活かした料理や食材の魅力を伝えることに喜びを感じます。農家や漁師との交流を通じて、地域の魅力を再発見する旅がぴったりです。",
-        "動き回る味覚探検家 (Dynamic Taste Explorer)": "あなたは観光地を精力的に巡る“動き回る味覚探検家”タイプ！アクティブに動きながら、幅広い食のジャンルを楽しむことが得意。観光スポットとご当地グルメを組み合わせたプランで、充実した旅を満喫しましょう。",
-        "伝統の味わい案内人 (Traditional Flavor Curator)": "あなたは昔ながらの味を愛する“伝統の味わい案内人”タイプ！老舗の味や代々受け継がれるレシピに心惹かれるあなたには、歴史とともに味わう食体験がぴったりです。時を超えた味わいを求めて、旅に出かけましょう。",
-        "シェフと語る美食家 (Chef’s Dialogue Enthusiast)": "あなたは料理人との交流を大切にする“シェフと語る美食家”タイプ！シェフや地元の料理人から直接調理のこだわりを聞く体験に興味津々。料理教室や体験がセットになった旅がぴったりです。",
-        "隠れ家グルメ探索者 (Hidden Plate Explorer)": "あなたは知る人ぞ知る名店を探す“隠れ家グルメ探索者”タイプ！大通りの名店よりも、静かで個性的なスポットを楽しむのが好きなあなたには、地元の人しか知らない隠れ家ツアーがぴったりです。",
-        "野生の食旅探検者 (Wild Food Adventurist)": "あなたは自然の恵みを楽しむ“野生の食旅探検者”タイプ！山菜採りや漁業体験を楽しむ旅が理想的。自然と触れ合う体験があなたを最高の旅に導くはずです！",
-        "料理体験愛好家 (Food Craft Enthusiast)": "あなたは自分で作る楽しさを追求する“料理体験愛好家”タイプ！収穫から調理までの一連の流れを楽しむワークショップが大好き。自分で作った料理を味わう充実感が得られる旅を探しましょう。",
-        "速攻型グルメハンター (Speedy Taste Seeker)": "あなたは限られた時間を効率的に使う“速攻型グルメハンター”タイプ！短時間で観光地を回りながら、話題のグルメを楽しむことに喜びを感じます。スピード感のあるツアーがぴったりです。",
-        "映え狙いの美食家 (Insta-Gastronome)": "あなたは見た目の美しさも重視する“映え狙いの美食家”タイプ！盛り付けの美しい料理やユニークな体験が好きなあなたには、SNS映えする体験型食スポットを巡る旅がぴったりです。"
-    };
 
-    document.getElementById("submitBtn").addEventListener("click", function () {
-        const form = document.forms["quizForm"];
-        const scores = {};
 
-        // 初期化: 各タイプのスコアを0に設定
-        Object.keys(typeMapping).forEach(type => scores[type] = 0);
 
-        // 質問をループしてスコアを加算
-        for (let i = 1; i <= 20; i++) {
-            const answer = form[`q${i}`]?.value;
-            if (answer) {
-                const answerScore = 7 - parseInt(answer); // 6段階評価を逆転
-                Object.keys(typeMapping).forEach(type => {
-                    if (typeMapping[type].includes(i)) {
-                        scores[type] += answerScore;
-                    }
-                });
-            }
-        }
 
-        // 最大スコアのタイプを取得
-        const resultType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
 
-        // 結果表示
-        document.getElementById("result").innerText = `あなたのタイプは: ${resultType}\n${typeDescriptions[resultType] || ""}`;
-    });
-</script>
+
+
+
+
+
+
+
+
+
