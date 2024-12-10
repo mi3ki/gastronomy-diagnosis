@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ガストロノミーツーリズム診断</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, p {
+            text-align: center;
+            color: #333;
+        }
+        .intro {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="intro">
+        <h1>ガストロノミーツーリズム診断</h1>
+        <p>
+            この診断では、あなたの旅行中の食体験や観光スタイルを分析し、<br>
+            最適なガストロノミータイプを発見します。<br>
+            地元の文化や食に対する関心度を深めるためのヒントを提供します。
+        </p>
+        <p>
+            以下の質問に直感的に答えていただくことで、<br>
+            あなたの旅行スタイルに最も合った結果を導き出します。
+        </p>
+        <button onclick="startQuiz()">診断を始める</button>
+    </div>
+
+    <script>
+        function startQuiz() {
+            // 質問ページ（quiz.html）に遷移
+            window.location.href = "quiz.html";
+        }
+    </script>
+</body>
+</html>
