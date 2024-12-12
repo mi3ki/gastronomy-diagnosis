@@ -756,7 +756,12 @@
     const questions = document.querySelectorAll(".question");
     const totalQuestions = questions.length;
     const scores = {};
-    const MAX_SCORE = 6;
+    const MAX_SCORE = 6; // スコア最大値
+    const questionWeights = {
+        1: 1.0, 8: 1.2, 12: 0.9, 13: 1.1, 20: 1.0, // 質問ごとの重み
+        // 他の質問番号も追加
+    };
+
     let allAnswered = true;
 
     Object.keys(typeMapping).forEach(type => scores[type] = 0);
@@ -771,8 +776,13 @@
         } else {
             const value = parseInt(selectedAnswer.value, 10);
 
-            // スコア計算の調整（例：重み付け）
-            const weight = 1; // 必要に応じて質問の重み付けを調整可能
+            if (value < 1 || value > MAX_SCORE) {
+                console.error(`質問${questionNumber}の選択値が範囲外です: ${value}`);
+                return;
+            }
+
+            // 重みを使ったスコア計算
+            const weight = questionWeights[questionNumber] || 1.0; // 未設定ならデフォルト1.0
             const answerScore = weight * (MAX_SCORE - value + 1);
 
             Object.keys(typeMapping).forEach(type => {
@@ -788,7 +798,7 @@
         return;
     }
 
-    // 各タイプの割合を計算
+    // スコアの割合を計算
     const totalScore = Object.values(scores).reduce((a, b) => a + b, 0);
     const percentages = {};
     Object.keys(scores).forEach(type => {
@@ -801,5 +811,6 @@
     console.log("各タイプの割合:", percentages);
     window.location.href = `result.html?type=${encodeURIComponent(resultType)}`;
 });
+
 
 </script>
