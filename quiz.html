@@ -756,7 +756,7 @@
     const questions = document.querySelectorAll(".question");
     const totalQuestions = questions.length;
     const scores = {};
-    const MAX_SCORE = 6; // 選択肢のスコア最大値
+    const MAX_SCORE = 6;
     let allAnswered = true;
 
     Object.keys(typeMapping).forEach(type => scores[type] = 0);
@@ -771,16 +771,10 @@
         } else {
             const value = parseInt(selectedAnswer.value, 10);
 
-            // 選択肢の値が範囲内か確認
-            if (value < 1 || value > MAX_SCORE) {
-                console.error(`質問${questionNumber}の選択値が範囲外です: ${value}`);
-                return;
-            }
+            // スコア計算の調整（例：重み付け）
+            const weight = 1; // 必要に応じて質問の重み付けを調整可能
+            const answerScore = weight * (MAX_SCORE - value + 1);
 
-            // 逆スコア計算: 最大値 - 選択値 + 1（+1は1から始めるため）
-            const answerScore = MAX_SCORE - value + 1;
-
-            // typeMappingで該当するタイプのスコアに加算
             Object.keys(typeMapping).forEach(type => {
                 if (typeMapping[type].includes(questionNumber)) {
                     scores[type] += answerScore;
@@ -794,8 +788,18 @@
         return;
     }
 
-    const resultType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+    // 各タイプの割合を計算
+    const totalScore = Object.values(scores).reduce((a, b) => a + b, 0);
+    const percentages = {};
+    Object.keys(scores).forEach(type => {
+        percentages[type] = (scores[type] / totalScore) * 100;
+    });
 
+    // 最大割合のタイプを選択
+    const resultType = Object.keys(percentages).reduce((a, b) => percentages[a] > percentages[b] ? a : b);
+
+    console.log("各タイプの割合:", percentages);
     window.location.href = `result.html?type=${encodeURIComponent(resultType)}`;
 });
+
 </script>
