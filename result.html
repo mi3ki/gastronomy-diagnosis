@@ -28,6 +28,9 @@
             margin-top: 20px;
             max-width: 300px;
             height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
         .buttons {
             margin-top: 30px;
@@ -51,7 +54,9 @@
 <body>
     <h1>ガストロノミーツーリズム診断結果</h1>
     <div class="result" id="resultType"></div>
-    <div class="result-image" id="resultImage"></div> <!-- 画像表示のための div -->
+    <!-- 診断結果の画像 -->
+    <img id="resultImage" class="result-image" alt="診断結果画像">
+    <!-- 診断結果の説明 -->
     <div class="description" id="resultDescription"></div>
     <div class="buttons">
         <!-- 戻るボタン -->
@@ -75,13 +80,13 @@
         const typeDescriptions = {
             "旅する冒険フーディー (Adventurous Traveling Foodie)": {
                 description: "あなたは“旅する冒険フーディー”タイプ！旅先で新しい味覚やユニークな体験を楽しむことが大好きです。挑戦心にあふれ、食を通じて世界を広げましょう！",
-                image: "images/adventurous_foodie.webp" // 画像パスを指定
+                image: "images/adventurous_foodie.webp"
             },
             "野生の食旅探検者 (Wild Food Adventurer)": {
                 description: "あなたは“野生の食旅探検者”タイプ！自然に囲まれた食体験が好きで、アウトドアや新鮮な素材にこだわる食旅がぴったりです。",
-                image: "images/Wild_Food_Adventurer.webp" // 画像パスを指定
+                image: "images/wild_food_adventurer.webp"
             },
-            "特別席の美食家 (Exclusive Gourmet Seeker)": {
+             "特別席の美食家 (Exclusive Gourmet Seeker)": {
                 description: "あなたは“特別席の美食家”タイプ！プレミアムな体験と贅沢な時間を大切にするあなたには、特別感のある食旅が最適です。",
                 image: "images/Exclusive_Gourmet_Seeker.webp" // 画像パスを指定
             },
@@ -136,7 +141,8 @@
             "クラシック美食家 (Classic Gourmet Enthusiast)": {
                 description: "あなたは“クラシック美食家”タイプ！老舗の味や歴史を感じる料理を楽しむ、伝統派の食旅がぴったりです。",
                 image: "images/Classic_Gourmet_Enthusiast.webp" // 画像パスを指定
-            }
+
+            
         };
 
         // 結果を表示
@@ -147,14 +153,16 @@
         if (resultType && typeDescriptions[resultType]) {
             resultElement.innerText = `あなたのタイプ: ${resultType}`;
             descriptionElement.innerText = typeDescriptions[resultType].description;
-            imageElement.innerHTML = `<img src="${typeDescriptions[resultType].image}" alt="${resultType}" class="result-image">`;
+            imageElement.src = typeDescriptions[resultType].image;
+            imageElement.alt = resultType;
         } else {
             resultElement.innerText = "診断結果が見つかりませんでした。";
             descriptionElement.innerText = "もう一度診断をお試しください。";
+            imageElement.style.display = "none"; // 画像を非表示
         }
 
         // SNSシェアリンクの作成
-        const baseUrl = window.location.origin + window.location.pathname; // 現在のページURL
+        const baseUrl = window.location.origin + window.location.pathname;
 
         // Twitter
         const twitterText = `私の診断結果は「${resultType}」でした！ #ガストロノミーツーリズム診断`;
@@ -169,11 +177,15 @@
 
         // Instagramシェアボタン
         document.getElementById('copyInstagram').addEventListener('click', function () {
-            const instagramText = `私の診断結果は「${resultType}」でした！\n${typeDescriptions[resultType].description}\n#ガストロノミーツーリズム診断\nURL: ${baseUrl}`;
+            const instagramText = `私の診断結果は「${resultType}」でした！\n${typeDescriptions[resultType]?.description || ""}\n#ガストロノミーツーリズム診断\nURL: ${baseUrl}`;
             navigator.clipboard.writeText(instagramText)
                 .then(() => alert("診断結果がコピーされました！Instagramでシェアしてください。"))
-                .catch(err => alert("コピーに失敗しました。"));
+                .catch(() => alert("コピーに失敗しました。"));
         });
     </script>
 </body>
 </html>
+
+
+
+
