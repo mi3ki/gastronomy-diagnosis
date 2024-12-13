@@ -28,6 +28,9 @@
             margin-top: 20px;
             max-width: 300px;
             height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
         .buttons {
             margin-top: 30px;
@@ -51,7 +54,9 @@
 <body>
     <h1>ガストロノミーツーリズム診断結果</h1>
     <div class="result" id="resultType"></div>
-    <div class="result-image" id="resultImage"></div> <!-- 画像表示のための div -->
+    <!-- 診断結果の画像 -->
+    <img id="resultImage" class="result-image" alt="診断結果画像">
+    <!-- 診断結果の説明 -->
     <div class="description" id="resultDescription"></div>
     <div class="buttons">
         <!-- 戻るボタン -->
@@ -75,68 +80,69 @@
         const typeDescriptions = {
             "旅する冒険フーディー (Adventurous Traveling Foodie)": {
                 description: "あなたは“旅する冒険フーディー”タイプ！旅先で新しい味覚やユニークな体験を楽しむことが大好きです。挑戦心にあふれ、食を通じて世界を広げましょう！",
-               
+                image: "images/adventurous_foodie.webp"
             },
             "野生の食旅探検者 (Wild Food Adventurer)": {
                 description: "あなたは“野生の食旅探検者”タイプ！自然に囲まれた食体験が好きで、アウトドアや新鮮な素材にこだわる食旅がぴったりです。",
-                
+                image: "images/wild_food_adventurer.webp"
             },
-            "特別席の美食家 (Exclusive Gourmet Seeker)": {
+             "特別席の美食家 (Exclusive Gourmet Seeker)": {
                 description: "あなたは“特別席の美食家”タイプ！プレミアムな体験と贅沢な時間を大切にするあなたには、特別感のある食旅が最適です。",
-                
+                image: "images/Exclusive_Gourmet_Seeker.webp" // 画像パスを指定
             },
             "美食の贅沢主義者 (Luxury Food Connoisseur)": {
                 description: "あなたは一流の味とサービスを追求する“美食の贅沢主義者”タイプ！高級感あふれるディナーコースや洗練された宿泊施設での食体験が好きなあなたには、特別なプライベートツアーや地元の一流シェフによる特別メニューがおすすめです。",
-               
+                image: "images/Luxury_Food_Connoisseur.webp" // 画像パスを指定
             },
             "ゆったり美食旅人 (Slow Journey Food Enthusiast)": {
                 description: "あなたは自分のペースで旅を楽しむ“ゆったり美食旅人”タイプ！時間をかけて食と旅を楽しむあなたには、静かな場所でのんびり過ごしながら地元の美味しい食事を楽しむ旅がおすすめです！",
-               
+                image: "images/Slow_Journey_Food_Enthusiast.webp" // 画像パスを指定
             },
             "革新派のグルメリーダー (Innovative Gourmet Leader)": {
                 description: "あなたは“革新派のグルメリーダー”タイプ！創造性豊かな料理や未知の味覚に挑むあなたには、最先端の美食体験がぴったりです。",
-                
+                image: "images/Innovative_Gourmet_Leader.webp" // 画像パスを指定
             },
             "自然を味わう冒険者 (Natural Adventurer)": {
                 description: "あなたは“自然を味わう冒険者”タイプ！自然に根ざした食材やアウトドア体験を楽しむ、健康志向の食旅がぴったりです。",
-                
+                image: "images/Natural_Adventurer.webp" // 画像パスを指定
             },
             "味わいミニマリスト (Flavor Minimalist)": {
                 description: "あなたは“味わいミニマリスト”タイプ！洗練された料理や素朴な味わいを楽しむスタイルがあなたに合っています。",
-               
+                image: "images/Flavor_Minimalist.webp" // 画像パスを指定
             },
             "地元の味わいアンバサダー (Local Flavor Ambassador)": {
                 description: "あなたは“地元の味わいアンバサダー”タイプ！地元の伝統料理や文化を深く味わい、地域の魅力を広める旅がぴったりです。",
-                
+                image: "images/Local_Flavor_Ambassador.webp" // 画像パスを指定
             },
             "独創の美食探求者 (Creative Gourmet Seeker)": {
                 description: "あなたは“独創の美食探求者”タイプ！クリエイティブな料理や未知の体験を楽しむことに情熱を注ぐあなたに、個性豊かな食旅がおすすめです。",
-                
+                image: "images/Creative_Gourmet_Seeker.webp" // 画像パスを指定
             },
             "映え狙いの美食家 (Insta-Gastronome)": {
                 description: "あなたは“映え狙いの美食家”タイプ！センス抜群で、華やかな盛り付けが好きなあなた！映えと美食を求めて、シェアしたくなる旅に出かけましょう。",
-                
+                image: "images/Insta_Gastronome.webp" // 画像パスを指定
             },
             "速攻型グルメハンター (Speedy Taste Seeker)": {
                 description: "あなたは“速攻型グルメハンター”タイプ！短い時間で観光と食を効率的に楽しむスピード感があなたにおすすめのスタイルです。",
-                
+                image: "images/Speedy_Taste_Seeker.webp" // 画像パスを指定
             },
             "美食の巡礼者 (gastronomy Pilgrim)": {
                 description: "あなたは“美食の巡礼者”タイプ！その土地でしか味わえない美味しい料理を求め、遠方の旅もいとわない真の美食探求者です。",
-                
+                image: "images/gastronomy_Pilgrim.webp" // 画像パスを指定
             },
             "賢く旅する美食家 (Savvy Foodie Traveler)": {
                 description: "あなたは“賢く旅する美食家”タイプ！限られた予算で最高の体験を楽しむ旅上手なスタイルが特長です。",
-               
+                image: "images/Savvy_Foodie_Traveler.webp" // 画像パスを指定
             },
             "週末美食エスケーパー(Weekend Food Escapist)": {
                 description: "あなたは“週末美食エスケーパー”タイプ！近場で手軽に楽しめる美味しい料理や気軽な旅行スタイルがおすすめです。",
-                
+                image: "images/Weekend_Food_Escapist.webp" // 画像パスを指定
             },
             "クラシック美食家 (Classic Gourmet Enthusiast)": {
                 description: "あなたは“クラシック美食家”タイプ！老舗の味や歴史を感じる料理を楽しむ、伝統派の食旅がぴったりです。",
-                
-            }
+                image: "images/Classic_Gourmet_Enthusiast.webp" // 画像パスを指定
+
+            
         };
 
         // 結果を表示
@@ -147,14 +153,16 @@
         if (resultType && typeDescriptions[resultType]) {
             resultElement.innerText = あなたのタイプ: ${resultType};
             descriptionElement.innerText = typeDescriptions[resultType].description;
-            imageElement.innerHTML = <img src="${typeDescriptions[resultType].image}" alt="${resultType}" class="result-image">;
+            imageElement.src = typeDescriptions[resultType].image;
+            imageElement.alt = resultType;
         } else {
             resultElement.innerText = "診断結果が見つかりませんでした。";
             descriptionElement.innerText = "もう一度診断をお試しください。";
+            imageElement.style.display = "none"; // 画像を非表示
         }
 
         // SNSシェアリンクの作成
-        const baseUrl = window.location.origin + window.location.pathname; // 現在のページURL
+        const baseUrl = window.location.origin + window.location.pathname;
 
         // Twitter
         const twitterText = 私の診断結果は「${resultType}」でした！ #ガストロノミーツーリズム診断;
@@ -169,10 +177,10 @@
 
         // Instagramシェアボタン
         document.getElementById('copyInstagram').addEventListener('click', function () {
-            const instagramText = 私の診断結果は「${resultType}」でした！\n${typeDescriptions[resultType].description}\n#ガストロノミーツーリズム診断\nURL: ${baseUrl};
+            const instagramText = 私の診断結果は「${resultType}」でした！\n${typeDescriptions[resultType]?.description || ""}\n#ガストロノミーツーリズム診断\nURL: ${baseUrl};
             navigator.clipboard.writeText(instagramText)
                 .then(() => alert("診断結果がコピーされました！Instagramでシェアしてください。"))
-                .catch(err => alert("コピーに失敗しました。"));
+                .catch(() => alert("コピーに失敗しました。"));
         });
     </script>
 </body>
