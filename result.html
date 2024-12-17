@@ -4,30 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>診断結果</title>
-
-    <!-- OGP設定追加 -->
-    <meta property="og:title" content="ガストロノミーツーリズム診断結果" />
-    <meta property="og:description" content="あなたにぴったりの食旅タイプを診断！#ガストロノミーツーリズム診断" />
-    <meta property="og:image" content="https://あなたのGitHubユーザー名.github.io/gastronomy-diagnosis/gs1.PNG" />
-    <meta property="og:url" content="https://あなたのGitHubユーザー名.github.io/gastronomy-diagnosis/result.html" />
-    <meta property="og:type" content="website" />
-
-    <!-- Twitterカード設定 -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="ガストロノミーツーリズム診断結果" />
-    <meta name="twitter:description" content="あなたにぴったりの食旅タイプを診断！#ガストロノミーツーリズム診断" />
-    <meta name="twitter:image" content="https://あなたのGitHubユーザー名.github.io/gastronomy-diagnosis/gs1.PNG" />
-
-    <!-- Font AwesomeのCDN追加（アイコン用） -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
             text-align: center;
         }
-        /* SNSボタンのスタイル */
-        .buttons .button {
+        h1 {
+            color: #333;
+        }
+        .result {
+            margin-top: 30px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .description {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+        .result-image {
+            margin-top: 20px;
+            max-width: 300px;
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .buttons {
+            margin-top: 30px;
+        }
+        .button {
             display: inline-block;
             margin: 10px;
             padding: 10px 20px;
@@ -37,9 +45,6 @@
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
-        }
-        .buttons .button i {
-            margin-right: 8px;
         }
         .button:hover {
             background-color: #45a049;
@@ -52,22 +57,12 @@
     <img id="resultImage" class="result-image" alt="診断結果画像">
     <div class="description" id="resultDescription"></div>
     <div class="buttons">
-    <a href="index.html" class="button">
-        <i class="fas fa-redo"></i> もう一度診断する
-    </a>
-    <a id="shareTwitter" class="button" target="_blank">
-        <i class="fab fa-twitter"></i> Twitterでシェア
-    </a>
-    <a id="shareFacebook" class="button" target="_blank">
-        <i class="fab fa-facebook"></i> Facebookでシェア
-    </a>
-    <a id="shareLine" class="button" target="_blank">
-        <i class="fas fa-comment"></i> LINEでシェア
-    </a>
-    <button id="copyInstagram" class="button">
-        <i class="fab fa-instagram"></i> Instagramに投稿する
-    </button>
-</div>
+        <a href="index.html" class="button">もう一度診断する</a>
+        <a id="shareTwitter" class="button" target="_blank">Twitterでシェア</a>
+        <a id="shareFacebook" class="button" target="_blank">Facebookでシェア</a>
+        <a id="shareLine" class="button" target="_blank">LINEでシェア</a>
+        <button id="copyInstagram" class="button">Instagramに投稿する</button>
+    </div>
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
@@ -145,7 +140,7 @@
         const imageElement = document.getElementById('resultImage');
 
         if (resultType && typeDescriptions[resultType]) {
-            resultElement.innerText = `あなたのタイプ: ${resultType}`;
+            resultElement.innerText = あなたのタイプ: ${resultType};
             descriptionElement.innerText = typeDescriptions[resultType].description;
             imageElement.src = typeDescriptions[resultType].image;
             imageElement.alt = resultType;
@@ -154,31 +149,6 @@
             descriptionElement.innerText = "もう一度診断をお試しください。";
             imageElement.style.display = "none";
         }
-
-        const baseUrl = window.location.href; // 現在のページURL
-    const twitterText = `私の診断結果は「${resultType}」でした！ #ガストロノミーツーリズム診断`;
-    const lineText = `私の診断結果は「${resultType}」でした！`;
-
-    // Twitterリンク生成
-    document.getElementById('shareTwitter').href = 
-        `https://twitter.com/share?text=${encodeURIComponent(twitterText)}&url=${encodeURIComponent(baseUrl)}`;
-
-    // Facebookリンク生成
-    document.getElementById('shareFacebook').href = 
-        `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(baseUrl)}`;
-
-    // LINEリンク生成
-    document.getElementById('shareLine').href = 
-        `https://line.me/R/msg/text/?${encodeURIComponent(lineText + " " + baseUrl)}`;
-
-    // Instagram用のテキストコピー機能
-    document.getElementById('copyInstagram').addEventListener('click', function () {
-        const instagramText = `私の診断結果は「${resultType}」でした！\n${typeDescriptions[resultType]?.description || ""}\n#ガストロノミーツーリズム診断\nURL: ${baseUrl}`;
-        navigator.clipboard.writeText(instagramText)
-            .then(() => alert("診断結果がコピーされました！Instagramでシェアしてください。"))
-            .catch(() => alert("コピーに失敗しました。"));
-    });
-
     </script>
 </body>
 </html>
