@@ -69,7 +69,7 @@
         const resultType = urlParams.get('type');
 
         const typeDescriptions = {
-            "旅する冒険フーディー (Adventurous Traveling Foodie)": {
+           "旅する冒険フーディー (Adventurous Traveling Foodie)": {
                 description: "あなたは“旅する冒険フーディー”「フクロウ」タイプ！旅先で新しい味覚やユニークな体験を楽しむことが大好きです。挑戦心にあふれ、食を通じて世界を広げましょう！",
                 image: "gs1.PNG"
             },
@@ -149,6 +149,29 @@
             descriptionElement.innerText = "もう一度診断をお試しください。";
             imageElement.style.display = "none";
         }
+        const baseUrl = window.location.href; // 現在のページURL
+    const twitterText = `私の診断結果は「${resultType}」でした！ #ガストロノミーツーリズム診断`;
+    const lineText = `私の診断結果は「${resultType}」でした！`;
+
+    // Twitterリンク生成
+    document.getElementById('shareTwitter').href = 
+        `https://twitter.com/share?text=${encodeURIComponent(twitterText)}&url=${encodeURIComponent(baseUrl)}`;
+
+    // Facebookリンク生成
+    document.getElementById('shareFacebook').href = 
+        `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(baseUrl)}`;
+
+    // LINEリンク生成
+    document.getElementById('shareLine').href = 
+        `https://line.me/R/msg/text/?${encodeURIComponent(lineText + " " + baseUrl)}`;
+
+    // Instagram用のテキストコピー機能
+    document.getElementById('copyInstagram').addEventListener('click', function () {
+        const instagramText = `私の診断結果は「${resultType}」でした！\n${typeDescriptions[resultType]?.description || ""}\n#ガストロノミーツーリズム診断\nURL: ${baseUrl}`;
+        navigator.clipboard.writeText(instagramText)
+            .then(() => alert("診断結果がコピーされました！Instagramでシェアしてください。"))
+            .catch(() => alert("コピーに失敗しました。"));
+    });
     </script>
 </body>
 </html>
