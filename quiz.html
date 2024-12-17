@@ -13,17 +13,17 @@
         }
         h1 {
             text-align: center;
-            margin-top: 70px;
+            margin-top: 60px;
         }
         /* 進捗バー */
         .progress-container {
-            width: 100%;
-            height: 10px;
-            background-color: #ddd;
             position: fixed;
             top: 0;
             left: 0;
-            z-index: 100;
+            width: 100%;
+            height: 10px;
+            background-color: #ddd;
+            z-index: 1000;
         }
         .progress-bar {
             height: 100%;
@@ -32,13 +32,13 @@
             transition: width 0.3s ease-in-out;
         }
         .question {
-            margin: 40px auto 20px auto;
+            margin: 40px auto;
             text-align: center;
         }
         .options {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
         }
         .option {
             display: flex;
@@ -49,10 +49,9 @@
             display: none;
         }
         .option label {
-            display: block;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
             text-align: center;
             border: 2px solid #ccc;
             border-radius: 50%;
@@ -68,14 +67,29 @@
             margin-top: 5px;
             font-size: 14px;
         }
+        button {
+            display: block;
+            margin: 30px auto;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
+    <!-- 進行状況バー -->
     <div class="progress-container">
         <div id="progressBar" class="progress-bar"></div>
     </div>
-    <h1>ガストロノミーツーリズム診断</h1>
 
+    <h1>ガストロノミーツーリズム診断</h1>
     <!-- 質問の例 -->
     <div class="question">
         <p>その土地に代々伝わる伝統的な料理や調理法に魅力を感じる。</p>
@@ -750,6 +764,7 @@
         const progressBar = document.getElementById('progressBar');
         const questions = document.querySelectorAll('.question input[type="radio"]');
 
+        // 進捗バーの更新
         function updateProgressBar() {
             const answered = Array.from(questions).filter(input => input.checked).length;
             const total = document.querySelectorAll('.question').length;
@@ -760,6 +775,12 @@
         questions.forEach(input => {
             input.addEventListener('change', updateProgressBar);
         });
+
+        document.getElementById('submitBtn').addEventListener('click', () => {
+            alert('診断結果を表示する準備ができました！');
+        });
+
+        updateProgressBar();
     </script>
 </body>
 </html>
