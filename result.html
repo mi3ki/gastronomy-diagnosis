@@ -140,7 +140,7 @@
         const imageElement = document.getElementById('resultImage');
 
         if (resultType && typeDescriptions[resultType]) {
-            resultElement.innerText = あなたのタイプ: ${resultType};
+            resultElement.innerText = `あなたのタイプ: ${resultType}`;
             descriptionElement.innerText = typeDescriptions[resultType].description;
             imageElement.src = typeDescriptions[resultType].image;
             imageElement.alt = resultType;
