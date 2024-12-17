@@ -733,8 +733,8 @@
         <button type="button" id="submitBtn">診断結果を見る</button>
     </form>
 
-    <script>
-        const typeMapping = {
+<script>
+    const typeMapping = {
         "旅する冒険フーディー (Adventurous Traveling Foodie)": [2, 4, 6, 8, 18],
         "野生の食旅探検者 (Wild Food Adventurer)": [4, 7, 10, 19],
         "特別席の美食家 (Exclusive Gourmet Seeker)": [6, 8, 9, 15],
@@ -752,38 +752,62 @@
         "週末美食エスケーパー(Weekend Gourmet Escapist)": [1, 8, 12, 13, 20],
         "クラシック美食家 (Classic Gourmet Enthusiast)": [1, 3, 5, 9]
     };
-        
-        const progressBar = document.getElementById('progressBar');
-        const questions = document.querySelectorAll('.question');
-        const submitBtn = document.getElementById("submitBtn");
-        let currentQuestion = 0;
 
-        // 進行状況バーを更新する
-        function updateProgressBar() {
-            const progress = ((currentQuestion + 1) / questions.length) * 100;
-            progressBar.style.width = progress + '%';
-        }
+    const progressBar = document.getElementById('progressBar');
+    const questions = document.querySelectorAll('.question');
+    const submitBtn = document.getElementById("submitBtn");
 
-        // 質問の回答チェックとスコア処理
-        submitBtn.addEventListener("click", () => {
-            let allAnswered = true;
+    let currentQuestion = 0;
 
-            questions.forEach((q, index) => {
-                const selected = q.querySelector(`input[name="q${index + 1}"]:checked`);
-                if (!selected) allAnswered = false;
-            });
+    // 進行状況バーの更新
+    function updateProgressBar() {
+        const progress = ((currentQuestion + 1) / questions.length) * 100;
+        progressBar.style.width = progress + '%';
+    }
 
-            if (!allAnswered) {
-                alert("すべての質問に回答してください。");
-                return;
-            }
-
-            alert("診断が完了しました！");
-            window.location.href = "result.html";
+    document.querySelectorAll('input[type="radio"]').forEach(input => {
+        input.addEventListener("change", () => {
+            currentQuestion = Array.from(questions).filter(q => 
+                q.querySelector('input[type="radio"]:checked')).length;
+            updateProgressBar();
         });
+    });
+
+    submitBtn.addEventListener("click", () => {
+        const scores = {};
+        let allAnswered = true;
 
         // 初期化
-        updateProgressBar();
-    </script>
+        Object.keys(typeMapping).forEach(type => scores[type] = 0);
+
+        // 質問ごとのスコアを処理
+        questions.forEach((q, index) => {
+            const selected = q.querySelector(`input[name="q${index + 1}"]:checked`);
+            if (!selected) allAnswered = false;
+
+            const value = selected ? parseInt(selected.value) : 0;
+
+            Object.keys(typeMapping).forEach(type => {
+                if (typeMapping[type].includes(index + 1)) {
+                    scores[type] += 7 - value; // スコア計算: 最大6点 -> 最小1点
+                }
+            });
+        });
+
+        if (!allAnswered) {
+            alert("すべての質問に回答してください。");
+            return;
+        }
+
+        // 最大スコアのタイプを選択
+        const resultType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+        console.log("診断結果:", resultType);
+
+        // 結果ページへリダイレクト
+        window.location.href = `result.html?type=${encodeURIComponent(resultType)}`;
+    });
+
+    updateProgressBar();
+</script>
 </body>
 </html>
