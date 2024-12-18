@@ -20,45 +20,20 @@
             margin-bottom: 30px;
             text-align: center;
         }
-        .question p {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 20px;
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background-color: #ddd;
+            z-index: 9999;
         }
-        .options {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-        }
-        .option {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .option input[type="radio"] {
-            display: none;
-        }
-        .option label {
-            width: 40px;
-            height: 40px;
-            border: 2px solid #ccc;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .option input[type="radio"]:checked + label {
+        .progress-bar {
+            height: 100%;
             background-color: #4CAF50;
-            color: white;
-            border-color: #4CAF50;
-        }
-        .option span {
-            margin-top: 10px;
-            font-size: 14px;
+            width: 0%;
+            transition: width 0.3s ease-in-out;
         }
         button {
             display: block;
@@ -71,24 +46,39 @@
             cursor: pointer;
             border-radius: 5px;
         }
-        button:hover {
-            background-color: #45a049;
+    </style>
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <h1>ガストロノミーツーリズム診断</h1>
+    <form id="quizForm">
+        <div class="question">
+            <p>その土地に代々伝わる伝統的な料理や調理法に魅力を感じる。</p>
+            <div class="options">
+                <input type="radio" id="q1-a1" name="q1" value="1"><label for="q1-a1">当てはまる</label>
+                <input type="radio" id="q1-a6" name="q1" value="6"><label for="q1-a6">当てはまらない</label>
+            </div>
+        </div>
+        <button type="button" id="submitBtn">診断結果を見る</button>
+    </form>
+    <script>
+        const totalQuestions = document.querySelectorAll(".question").length;
+
+        // 進捗バー更新
+        function updateProgressBar() {
+            const answeredQuestions = document.querySelectorAll('input[type="radio"]:checked').length;
+            const progress = (answeredQuestions / totalQuestions) * 100;
+            document.getElementById("progressBar").style.width = progress + "%";
         }
-        .progress-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 10px;
-        background-color: #ddd;
-        z-index: 1000;
-    }
-    .progress-bar {
-        height: 100%;
-        background-color: #4CAF50;
-        width: 0%;
-        transition: width 0.3s ease-in-out;
-    }
+
+        // ラジオボタン変更時に進捗バーを更新
+        document.querySelectorAll('input[type="radio"]').forEach(input => {
+            input.addEventListener("change", updateProgressBar);
+        });
+    </script>
+
     </style>
 </head>
 <body>
