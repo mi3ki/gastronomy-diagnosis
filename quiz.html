@@ -74,26 +74,21 @@
         button:hover {
             background-color: #45a049;
         }
-    </style>
-
-
-        /* 進捗バーの固定表示 */
         .progress-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background-color: #ddd;
-            z-index: 1000;
-        }
-        .progress-bar {
-            height: 100%;
-            background-color: #4CAF50;
-            width: 0%;
-            transition: width 0.3s ease-in-out;
-        }
-
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 10px;
+        background-color: #ddd;
+        z-index: 1000;
+    }
+    .progress-bar {
+        height: 100%;
+        background-color: #4CAF50;
+        width: 0%;
+        transition: width 0.3s ease-in-out;
+    }
     </style>
 </head>
 <body>
@@ -833,6 +828,20 @@
     console.log("各タイプの割合:", percentages);
     window.location.href = `result.html?type=${encodeURIComponent(resultType)}`;
 });
+    const progressBar = document.createElement("div");
+progressBar.style.cssText = "position: fixed; top: 0; left: 0; width: 0%; height: 10px; background: #4CAF50; transition: width 0.3s;";
+document.body.insertBefore(progressBar, document.body.firstChild);
+
+function updateProgressBar() {
+    const answeredQuestions = document.querySelectorAll('input[type="radio"]:checked').length;
+    const progress = (answeredQuestions / totalQuestions) * 100;
+    progressBar.style.width = progress + "%";
+}
+
+document.querySelectorAll('input[type="radio"]').forEach(input => {
+    input.addEventListener("change", updateProgressBar);
+});
+
 
 
 </script>
