@@ -831,9 +831,20 @@ function updateProgressBar() {
 document.querySelectorAll('input[type="radio"]').forEach(input => {
     input.addEventListener("change", updateProgressBar);
 });
+        const totalQuestions = document.querySelectorAll(".question").length;
+        const progressBar = document.getElementById("progressBar");
 
+        // 進捗バー更新関数
+        function updateProgressBar() {
+            const answeredQuestions = document.querySelectorAll('input[type="radio"]:checked').length;
+            const progress = (answeredQuestions / totalQuestions) * 100;
+            progressBar.style.width = progress + "%";
+        }
 
-
+        // イベントリスナーで進捗バーを更新
+        document.querySelectorAll('input[type="radio"]').forEach(input => {
+            input.addEventListener("change", updateProgressBar);
+        });
 </script>
 </body>
 </html>
