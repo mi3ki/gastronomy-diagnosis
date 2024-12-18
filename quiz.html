@@ -6,13 +6,15 @@
     <title>ガストロノミーツーリズム診断</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: '游ゴシック', 'Yu Gothic', sans-serif;
+            margin: 0;
+            padding: 0;
             background-color: #f9f9f9;
+            color: #333;
         }
         h1 {
-            color: #333;
             text-align: center;
+            margin: 60px 20px 20px;
         }
         .question {
             margin-bottom: 30px;
@@ -72,6 +74,21 @@
         button:hover {
             background-color: #45a049;
         }
+        .progress-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 10px;
+        background-color: #ddd;
+        z-index: 1000;
+    }
+    .progress-bar {
+        height: 100%;
+        background-color: #4CAF50;
+        width: 0%;
+        transition: width 0.3s ease-in-out;
+    }
     </style>
 </head>
 <body>
@@ -811,6 +828,20 @@
     console.log("各タイプの割合:", percentages);
     window.location.href = `result.html?type=${encodeURIComponent(resultType)}`;
 });
+    const progressBar = document.createElement("div");
+progressBar.style.cssText = "position: fixed; top: 0; left: 0; width: 0%; height: 10px; background: #4CAF50; transition: width 0.3s;";
+document.body.insertBefore(progressBar, document.body.firstChild);
+
+function updateProgressBar() {
+    const answeredQuestions = document.querySelectorAll('input[type="radio"]:checked').length;
+    const progress = (answeredQuestions / totalQuestions) * 100;
+    progressBar.style.width = progress + "%";
+}
+
+document.querySelectorAll('input[type="radio"]').forEach(input => {
+    input.addEventListener("change", updateProgressBar);
+});
+
 
 
 </script>
