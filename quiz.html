@@ -6,13 +6,22 @@
     <title>ガストロノミーツーリズム診断</title>
     <style>
         body {
-            font-family: '游ゴシック', 'Yu Gothic', sans-serif;
+            font-family: Arial, sans-serif;
+            margin: 20px;
             background-color: #f9f9f9;
+        }
+        h1 {
             color: #333;
+            text-align: center;
         }
         .question {
             margin-bottom: 30px;
             text-align: center;
+        }
+        .question p {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
         .options {
             display: flex;
@@ -20,54 +29,49 @@
             align-items: center;
             gap: 20px;
         }
+        .option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
         .option input[type="radio"] {
             display: none;
         }
         .option label {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #ccc;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
+            font-size: 16px;
             cursor: pointer;
             transition: all 0.3s ease;
-            background-color: #ccc; /* デフォルト色 */
-            border-radius: 50%;
-            border: 2px solid #ccc;
         }
         .option input[type="radio"]:checked + label {
+            background-color: #4CAF50;
             color: white;
-            border-color: transparent;
+            border-color: #4CAF50;
         }
-    </style>
-</head>
-<body>
-    <h1>ガストロノミーツーリズム診断</h1>
-    <form id="quizForm">
-        <div class="question">
-            <p>その土地に代々伝わる伝統的な料理や調理法に魅力を感じる。</p>
-            <div class="options">
-                <input type="radio" id="q1-a1" name="q1" value="1"><label for="q1-a1">当てはまる</label>
-                <input type="radio" id="q1-a6" name="q1" value="6"><label for="q1-a6">当てはまらない</label>
-            </div>
-        </div>
-        <button type="button" id="submitBtn">診断結果を見る</button>
-    </form>
-    <script>
-        const totalQuestions = document.querySelectorAll(".question").length;
-
-        // 進捗バー更新
-        function updateProgressBar() {
-            const answeredQuestions = document.querySelectorAll('input[type="radio"]:checked').length;
-            const progress = (answeredQuestions / totalQuestions) * 100;
-            document.getElementById("progressBar").style.width = progress + "%";
+        .option span {
+            margin-top: 10px;
+            font-size: 14px;
         }
-
-        // ラジオボタン変更時に進捗バーを更新
-        document.querySelectorAll('input[type="radio"]').forEach(input => {
-            input.addEventListener("change", updateProgressBar);
-        });
-    </script>
-
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -724,6 +728,7 @@
         </div>
     </div>
 </div>
+       
         <button type="button" id="submitBtn">診断結果を見る</button>
     </form>
 
@@ -746,7 +751,8 @@
         "週末美食エスケーパー(Weekend Gourmet Escapist)": [1, 8, 12, 13, 20],
         "クラシック美食家 (Classic Gourmet Enthusiast)": [1, 3, 5, 9]
     };
-        document.getElementById("submitBtn").addEventListener("click", function () {
+        
+   document.getElementById("submitBtn").addEventListener("click", function () {
     const questions = document.querySelectorAll(".question");
     const totalQuestions = questions.length;
     const scores = {};
@@ -805,68 +811,8 @@
     console.log("各タイプの割合:", percentages);
     window.location.href = `result.html?type=${encodeURIComponent(resultType)}`;
 });
-    const progressBar = document.createElement("div");
-progressBar.style.cssText = "position: fixed; top: 0; left: 0; width: 0%; height: 10px; background: #4CAF50; transition: width 0.3s;";
-document.body.insertBefore(progressBar, document.body.firstChild);
 
-function updateProgressBar() {
-    const answeredQuestions = document.querySelectorAll('input[type="radio"]:checked').length;
-    const progress = (answeredQuestions / totalQuestions) * 100;
-    progressBar.style.width = progress + "%";
-}
 
-document.querySelectorAll('input[type="radio"]').forEach(input => {
-    input.addEventListener("change", updateProgressBar);
-});
-        const totalQuestions = document.querySelectorAll(".question").length;
-        const progressBar = document.getElementById("progressBar");
-
-        // 進捗バー更新関数
-        function updateProgressBar() {
-            const answeredQuestions = document.querySelectorAll('input[type="radio"]:checked').length;
-            const progress = (answeredQuestions / totalQuestions) * 100;
-            progressBar.style.width = progress + "%";
-        }
-
-        // イベントリスナーで進捗バーを更新
-        document.querySelectorAll('input[type="radio"]').forEach(input => {
-            input.addEventListener("change", updateProgressBar);
-        });
-        
-        // 色の範囲 (当てはまる -> 緑, 当てはまらない -> 青)
-        function calculateColor(value) {
-            const min = 1; // 最小値
-            const max = 6; // 最大値
-            const green = Math.round((1 - (value - min) / (max - min)) * 255);
-            const blue = Math.round(((value - min) / (max - min)) * 255);
-            return `rgb(${green}, ${Math.min(green, blue)}, ${blue})`;
-        }
-
-        // サイズの範囲 (中央 -> 小, 両端 -> 大)
-        function calculateSize(value) {
-            const baseSize = 40; // 基本のサイズ
-            const scale = 1.5;  // サイズのスケール（倍率）
-            return `${baseSize + (value - 3) * scale}px`;
-        }
-
-        // 全ラジオボタンにイベントリスナーを追加
-        document.querySelectorAll('.option input[type="radio"]').forEach(radio => {
-            const label = radio.nextElementSibling; // 対応するラベル
-            const value = parseInt(radio.value, 10);
-            label.style.backgroundColor = calculateColor(value); // 初期色設定
-            label.style.width = calculateSize(value); // 初期サイズ設定
-            label.style.height = calculateSize(value); // 高さも設定
-
-            radio.addEventListener('change', () => {
-                document.querySelectorAll(`input[name="${radio.name}"]`).forEach(input => {
-                    const siblingLabel = input.nextElementSibling;
-                    const siblingValue = parseInt(input.value, 10);
-                    siblingLabel.style.backgroundColor = calculateColor(siblingValue); // 色再設定
-                    siblingLabel.style.width = calculateSize(siblingValue); // サイズ再設定
-                    siblingLabel.style.height = calculateSize(siblingValue); // 高さも再設定
-                });
-            });
-        });
-    </script>
+</script>
 </body>
 </html>
