@@ -6,58 +6,48 @@
     <title>ガストロノミーツーリズム診断</title>
     <style>
         body {
-            font-family: '游ゴシック', 'Yu Gothic', sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: Arial, sans-serif;
+            margin: 20px;
             background-color: #f9f9f9;
-            color: #333;
         }
         h1 {
+            color: #333;
             text-align: center;
-            margin: 60px 20px 20px;
         }
-
-        /* 進捗バー */
-        .progress-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background-color: #ddd;
-            z-index: 1000;
-        }
-        .progress-bar {
-            height: 100%;
-            background-color: #4CAF50;
-            width: 0%;
-            transition: width 0.3s ease-in-out;
-        }
-
-        /* 質問スタイル */
         .question {
-            margin: 30px auto;
+            margin-bottom: 30px;
             text-align: center;
-            max-width: 800px;
+        }
+        .question p {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
         .options {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+        }
+        .option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .option input[type="radio"] {
             display: none;
         }
         .option label {
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-            text-align: center;
+            width: 40px;
+            height: 40px;
             border: 2px solid #ccc;
             border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
         .option input[type="radio"]:checked + label {
             background-color: #4CAF50;
@@ -65,56 +55,94 @@
             border-color: #4CAF50;
         }
         .option span {
-            margin-top: 5px;
+            margin-top: 10px;
             font-size: 14px;
         }
-
-        /* 結果表示ボタン */
-        .submit-btn {
+        button {
             display: block;
-            margin: 40px auto;
+            margin: 20px auto;
             padding: 15px 30px;
             font-size: 18px;
             background-color: #4CAF50;
             color: white;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
+            border-radius: 5px;
         }
-        .submit-btn:hover {
+        button:hover {
             background-color: #45a049;
-        }
-
-        /* スマホ対応 */
-        @media (max-width: 768px) {
-            h1 {
-                margin-top: 80px;
-            }
-            .options {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-            .option label {
-                width: 40px;
-                height: 40px;
-                line-height: 40px;
-                font-size: 12px;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- 進捗バー -->
-    <div class="progress-container">
-        <div id="progressBar" class="progress-bar"></div>
-    </div>
-
     <h1>ガストロノミーツーリズム診断</h1>
+    <form id="quizForm">
+        <!-- 質問例 -->
+        <div class="question">
+            <p>その土地に代々伝わる伝統的な料理や調理法に魅力を感じる。</p>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="q1-a1" name="q1" value="1">
+                    <label for="q1-a1"></label>
+                    <span>当てはまる</span>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1-a2" name="q1" value="2">
+                    <label for="q1-a2"></label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1-a3" name="q1" value="3">
+                    <label for="q1-a3"></label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1-a4" name="q1" value="4">
+                    <label for="q1-a4"></label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1-a5" name="q1" value="5">
+                    <label for="q1-a5"></label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1-a6" name="q1" value="6">
+                    <label for="q1-a6"></label>
+                    <span>当てはまらない</span>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+    <p>現代的で独創的なアレンジがされた料理を楽しみたい。</p>
+    <div class="options">
+        <div class="option">
+            <input type="radio" id="q2-a1" name="q2" value="1">
+            <label for="q2-a1"></label>
+            <span>当てはまる</span>
+        </div>
+        <div class="option">
+            <input type="radio" id="q2-a2" name="q2" value="2">
+            <label for="q2-a2"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q2-a3" name="q2" value="3">
+            <label for="q2-a3"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q2-a4" name="q2" value="4">
+            <label for="q2-a4"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q2-a5" name="q2" value="5">
+            <label for="q2-a5"></label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q2-a6" name="q2" value="6">
+            <label for="q2-a6"></label>
+            <span>当てはまらない</span>
+        </div>
+    </div>
+</div>
 
-    <!-- 質問1 -->
-    <div class="question">
-        <p>その土地の定番料理や伝統を大切にした食文化体験を選びたい。</p>
+<div class="question">
+    <p>その土地の定番料理や伝統を大切にした食文化体験を選びたい。</p>
     <div class="options">
         <div class="option">
             <input type="radio" id="q3-a1" name="q3" value="1">
@@ -700,14 +728,12 @@
         </div>
     </div>
 </div>
-
-   
-
-    <!-- 結果ボタン -->
-    <button type="button" id="submitBtn" class="submit-btn">診断結果を見る</button>
+       
+        <button type="button" id="submitBtn">診断結果を見る</button>
+    </form>
 
     <script>
-         const typeMapping = {
+        const typeMapping = {
         "旅する冒険フーディー (Adventurous Traveling Foodie)": [2, 4, 6, 8, 18],
         "野生の食旅探検者 (Wild Food Adventurer)": [4, 7, 10, 19],
         "特別席の美食家 (Exclusive Gourmet Seeker)": [6, 8, 9, 15],
@@ -725,28 +751,68 @@
         "週末美食エスケーパー(Weekend Gourmet Escapist)": [1, 8, 12, 13, 20],
         "クラシック美食家 (Classic Gourmet Enthusiast)": [1, 3, 5, 9]
     };
-        const progressBar = document.getElementById('progressBar');
-        const questions = document.querySelectorAll('.question input[type="radio"]');
+        
+   document.getElementById("submitBtn").addEventListener("click", function () {
+    const questions = document.querySelectorAll(".question");
+    const totalQuestions = questions.length;
+    const scores = {};
+    const MAX_SCORE = 6; // スコア最大値
+    const questionWeights = {
+        1: 1.0, 8: 1.2, 12: 0.9, 13: 1.1, 20: 1.0, // 質問ごとの重み
+        // 他の質問番号も追加
+    };
 
-        // 進捗バーの更新
-        function updateProgressBar() {
-            const answered = Array.from(questions).filter(input => input.checked).length;
-            const total = document.querySelectorAll('.question').length;
-            const progress = (answered / total) * 100;
-            progressBar.style.width = `${progress}%`;
+    let allAnswered = true;
+
+    Object.keys(typeMapping).forEach(type => scores[type] = 0);
+
+    questions.forEach((question, index) => {
+        const questionNumber = index + 1;
+        const selectedAnswer = question.querySelector(`input[name="q${questionNumber}"]:checked`);
+
+        if (!selectedAnswer) {
+            allAnswered = false;
+            console.warn(`質問${questionNumber}が未回答です！`);
+        } else {
+            const value = parseInt(selectedAnswer.value, 10);
+
+            if (value < 1 || value > MAX_SCORE) {
+                console.error(`質問${questionNumber}の選択値が範囲外です: ${value}`);
+                return;
+            }
+
+            // 重みを使ったスコア計算
+            const weight = questionWeights[questionNumber] || 1.0; // 未設定ならデフォルト1.0
+            const answerScore = weight * (MAX_SCORE - value + 1);
+
+            Object.keys(typeMapping).forEach(type => {
+                if (typeMapping[type].includes(questionNumber)) {
+                    scores[type] += answerScore;
+                }
+            });
         }
+    });
 
-        questions.forEach(input => {
-            input.addEventListener('change', updateProgressBar);
-        });
+    if (!allAnswered) {
+        alert("すべての質問に回答してください。");
+        return;
+    }
 
-        document.getElementById('submitBtn').addEventListener('click', () => {
-            // 結果表示処理
-            console.log("診断結果を処理するコードをここに追加してください");
-            // 例: location.href = 'result.html';
-        });
+    // スコアの割合を計算
+    const totalScore = Object.values(scores).reduce((a, b) => a + b, 0);
+    const percentages = {};
+    Object.keys(scores).forEach(type => {
+        percentages[type] = (scores[type] / totalScore) * 100;
+    });
 
-        updateProgressBar();
-    </script>
+    // 最大割合のタイプを選択
+    const resultType = Object.keys(percentages).reduce((a, b) => percentages[a] > percentages[b] ? a : b);
+
+    console.log("各タイプの割合:", percentages);
+    window.location.href = `result.html?type=${encodeURIComponent(resultType)}`;
+});
+
+
+</script>
 </body>
 </html>
