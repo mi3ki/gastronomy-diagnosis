@@ -5,17 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ガストロノミーツーリズム診断</title>
     <style>
-   body {
+  body {
     font-family: '游ゴシック', 'Yu Gothic', sans-serif;
     margin: 0;
-    padding: 0 20px; /* 左右の余白を追加 */
+    padding: 0 20px !important;
     background-color: #f9f9f9;
     color: #333;
+    box-sizing: border-box;
 }
 
 .question {
-    margin: 0 auto 30px auto; /* 上下マージンのみ適用 */
-    max-width: 90%; /* コンテンツの最大幅を設定 */
+    margin: 0 auto 30px auto !important;
+    max-width: 85% !important;
+    box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+    body {
+        padding: 0 40px !important;
+    }
+    .question {
+        max-width: 80% !important;
+    }
 }
 
         .options {
